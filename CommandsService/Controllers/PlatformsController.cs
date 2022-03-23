@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CommandsService.Controllers
 {
-    [Route("api/c/[controller")]
+    [Route("api/c/[controller]")]
     [ApiController]
     public class PlatformsController : ControllerBase
     {
@@ -12,9 +12,12 @@ namespace CommandsService.Controllers
             
         }
 
+        [HttpPost]
         public ActionResult TestInboundConection()
         {
-            Console.WriteLine("Inbound POST at the # command service!")
+            Console.WriteLine("Inbound POST at the # command service!");
+
+            return Ok("inbound test from platforms controller");
         }
     }
 }
