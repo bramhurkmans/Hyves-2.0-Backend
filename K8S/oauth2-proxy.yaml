@@ -17,20 +17,29 @@ spec:
     spec:
       containers:
       - args:
-        - --provider=github
+        - --provider=oidc
+        - --oidc-issuer-url=https://hyves2-keycloak.azurewebsites.net/auth/realms/Hyves2
+        - --upstream="file://dev/null"
+        - --client-id=user
+        - --client-secret=URPftVzaaZXzGl98xCf5Sjk3fY6ZWwPO
+        - --cookie-secret=x-1vrrMhC-886ITuz8ySNw==
         - --email-domain=*
-        - --upstream=file:///dev/null
+        # - --scope=openid profile email users
+        # - --cookie-domain=.localtest.me
+        # - --whitelist-domain=.localtest.me
+        - --pass-authorization-header=true
+        - --pass-access-token=true
+        - --pass-user-headers=true
+        - --set-authorization-header=true
+        - --set-xauthrequest=true
+        - --cookie-refresh=1m
+        - --cookie-expire=30m
         - --http-address=0.0.0.0:4180
-        # Register a new application
-        # https://github.com/settings/applications/new
-        env:
-        - name: OAUTH2_PROXY_CLIENT_ID
-          value: aecb8cb45ddd1a33d52d
-        - name: OAUTH2_PROXY_CLIENT_SECRET
-          value: 732d9826478c117e6d1bbfeaa41a781e876dc4b0
-        # docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'
-        - name: OAUTH2_PROXY_COOKIE_SECRET
-          value: dGlKRGlUWmRZQ2pPanNRSXpsWXFwZz09
+        - --insecure-oidc-allow-unverified-email
+        - --pass-access-token=true
+        - --set-xauthrequest=true
+        - --set-authorization-header=true
+        - --skip-provider-button=true
         image: quay.io/oauth2-proxy/oauth2-proxy:latest
         imagePullPolicy: Always
         name: oauth2-proxy
