@@ -21,25 +21,25 @@ spec:
         - --oidc-issuer-url=https://hyves2-keycloak.azurewebsites.net/auth/realms/Hyves2
         - --upstream="file://dev/null"
         - --client-id=user
-        - --client-secret=URPftVzaaZXzGl98xCf5Sjk3fY6ZWwPO
+        - --client-secret=7rjRtvBakgkHDHzkZXdPWLtiEdknkmbk
         - --cookie-secret=x-1vrrMhC-886ITuz8ySNw==
+        # - --cookie-refresh=2m
         - --email-domain=*
         # - --scope=openid profile email users
         # - --cookie-domain=.localtest.me
         # - --whitelist-domain=.localtest.me
+        - --skip-jwt-bearer-tokens=true
         - --pass-authorization-header=true
         - --pass-access-token=true
         - --pass-user-headers=true
         - --set-authorization-header=true
         - --set-xauthrequest=true
-        - --cookie-refresh=1m
-        - --cookie-expire=30m
         - --http-address=0.0.0.0:4180
         - --insecure-oidc-allow-unverified-email
-        - --pass-access-token=true
-        - --set-xauthrequest=true
-        - --set-authorization-header=true
         - --skip-provider-button=true
+        - --request-logging=true
+        - --auth-logging=true
+        - --standard-logging=true
         image: quay.io/oauth2-proxy/oauth2-proxy:latest
         imagePullPolicy: Always
         name: oauth2-proxy

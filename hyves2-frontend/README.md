@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+docker build -t bramhurkmans/hyves2frontend .
+docker push bramhurkmans/hyves2frontend
