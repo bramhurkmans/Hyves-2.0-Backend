@@ -1,0 +1,15 @@
+dependencies:
+- name: platform-service
+  repository: file://charts/platform-service
+  version: 0.1.0
+- name: commands-service
+  repository: file://charts/commands-service
+  version: 0.1.0
+- name: user-service
+  repository: file://charts/user-service
+  version: 0.1.0
+- name: rabbitmq
+  repository: https://charts.bitnami.com/bitnami
+  version: 8.31.4
+digest: sha256:8f13419a44c16671c815517997feefc95aca8e8611633abcec7e2bbab21a0ada
+generated: "2022-04-14T01:45:06.7431895+02:00"

@@ -1,0 +1,49 @@
+apiVersion: v2
+name: hyves2-chart
+description: A Helm chart for Kubernetes
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.1.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "1.16.0"
+name: hyves2-se6
+description: Individual project Fontys semester 6!
+type: application
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates
+version: 0.1.0
+# All E-Commerce micro-services Helm Charts that are needed
+# versions needs to be changed, whenever corresponding the sub chart versions are changing
+dependencies:
+- name: platform-service
+  repository: file://charts/platform-service
+  version: 0.1.0
+  condition: platform-service.enabled
+- name: commands-service
+  repository: file://charts/commands-service
+  version: 0.1.0
+  condition: commands-service.enabled
+- name: user-service
+  repository: file://charts/user-service
+  version: 0.1.0
+  condition: user-service.enabled
+- name: rabbitmq
+  version: 8.31.4
+  repository: https://charts.bitnami.com/bitnami
+  condition: broker.enabled
