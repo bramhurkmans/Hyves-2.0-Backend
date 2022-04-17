@@ -43,7 +43,3 @@ dependencies:
   repository: file://charts/user-service
   version: 0.1.0
   condition: user-service.enabled
-- name: rabbitmq
-  version: 8.31.4
-  repository: https://charts.bitnami.com/bitnami
-  condition: broker.enabled
