@@ -29,3 +29,5 @@ jobs:
           dockerfile: ./UserService/Dockerfile
           push: true
           tags: bramhurkmans/userservice
+          secrets: |
+            GIT_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
