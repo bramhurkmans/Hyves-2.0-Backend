@@ -28,7 +28,7 @@ env:
 
 jobs:
   setup-build-publish-deploy:
-    name: Setup, Build, Publish, and Deploy
+    name: UserService
     runs-on: ubuntu-latest
 
     # Add "id-token" with the intended permissions.
