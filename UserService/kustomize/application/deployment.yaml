@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-depl
+  name: userservice
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: userservicee
+      app: userservice
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -15,8 +15,8 @@ spec:
   template:
     metadata:
       labels:
-        app: userservicee
+        app: userservice
     spec:
       containers:
-        - name: userservicee
+        - name: userservice
           image: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
