@@ -1,3 +1,5 @@
+[![UserService](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-user-service.yml/badge.svg)](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-user-service.yml)
+
 # Hyves-2.0-Backend
 Individiual project for Semester 6
 
