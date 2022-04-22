@@ -19,4 +19,4 @@ spec:
     spec:
       containers:
         - name: userservice
-          image: bramhurkmans/userservice:latest
+          image: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
