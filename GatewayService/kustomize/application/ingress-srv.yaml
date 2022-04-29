@@ -44,7 +44,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: bram.dev
+  - host: hyves.social
     http:
       paths:
       - path: /oauth2
