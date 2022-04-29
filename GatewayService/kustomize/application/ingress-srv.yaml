@@ -14,7 +14,7 @@ metadata:
     # cert-manager.io/cluster-issuer: selfsigned-issuer
 spec:
   rules:
-    - host: bram.dev
+    - host: hyves.social
       http:
         paths:
           - path: /
@@ -24,18 +24,11 @@ spec:
                 name: frontend-clusterip-srv
                 port:
                   number: 8080
-          - path: /api/platforms
+          - path: /api/users
             pathType: Prefix
             backend:
               service:
-                name: platforms-clusterip-srv
-                port:
-                  number: 80
-          - path: /api/c/platforms
-            pathType: Prefix
-            backend:
-              service:
-                name: commands-clusterip-srv
+                name: user-clusterip-srv
                 port:
                   number: 80
   # tls:
