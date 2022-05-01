@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-srv
@@ -17,20 +17,20 @@ spec:
     - host: hyves.social
       http:
         paths:
-          # - path: /
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: frontend-clusterip-srv
-          #       port:
-          #         number: 8080
-          - path: /api/users
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: userservice-loadbalancer
+                name: frontend-clusterip-srv
                 port:
-                  number: 8080
+                  number: 8081
+          # - path: /api/users
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: userservice-loadbalancer
+          #       port:
+          #         number: 8080
   # tls:
   # - hosts:
   #   - bram.dev
