@@ -28,9 +28,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: user-clusterip-srv
+                name: userservice-loadbalancer
                 port:
-                  number: 80
+                  number: 8080
   # tls:
   # - hosts:
   #   - bram.dev
