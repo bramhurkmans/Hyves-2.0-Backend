@@ -20,7 +20,7 @@ spec:
       containers:
         - name: userservice
           image: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
-          readinessProbe:
+          livenessProbe:
             httpGet:
               path: /health
               port: 80
