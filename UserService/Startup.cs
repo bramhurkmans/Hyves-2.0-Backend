@@ -32,6 +32,8 @@ namespace UserService
 
             services.AddControllers();
 
+            services.AddHealthChecks();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
