@@ -43,10 +43,10 @@ metadata:
   namespace: kube-system
 spec:
   rules:
-  - host: hyves.social
+  - host: oauth.hyves.social
     http:
       paths:
-      - path: /oauth2
+      - path: /
         pathType: Prefix
         backend:
           service:
