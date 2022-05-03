@@ -21,7 +21,7 @@ spec:
         - --oidc-issuer-url=https://hyves2-keycloak.azurewebsites.net/auth/realms/Hyves2
         - --upstream="file://dev/null"
         - --client-id=user
-        - --client-secret=7rjRtvBakgkHDHzkZXdPWLtiEdknkmbk
+        - --client-secret=UzlnYSn65MyhYB4rTlt2ySV6TKhiIiUh
         - --cookie-secret=x-1vrrMhC-886ITuz8ySNw==
         # - --cookie-refresh=2m
         - --email-domain=*
