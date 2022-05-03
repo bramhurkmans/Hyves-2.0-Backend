@@ -5,8 +5,8 @@ metadata:
   annotations:
     # kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: 'true'
-    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
-    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+    nginx.ingress.kubernetes.io/auth-url: "http://oauth.hyves.social/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "http://oauth.hyves.social/oauth2/start?rd=$escaped_request_uri"
     nginx.ingress.kubernetes.io/auth-response-headers:  "Authorization, X-Auth-Request-Email, X-Auth-Request-User, X-Forwarded-Access-Token"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       auth_request_set $token $upstream_http_x_auth_request_access_token;
