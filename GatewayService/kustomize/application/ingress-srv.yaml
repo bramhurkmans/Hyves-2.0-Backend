@@ -49,10 +49,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - oauth.hyves.social
+    - hyves.social
     secretName: hyves-social-oauth-tls
   rules:
-  - host: oauth.hyves.social
+  - host: hyves.social
     http:
       paths:
       - path: /
