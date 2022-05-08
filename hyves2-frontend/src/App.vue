@@ -34,16 +34,16 @@
         <v-toolbar dark color="accent" height="32">
           <v-btn
             href=""
-            target="_blank"
             text
+            to="/"
           >
             <span class="mr-2">Home</span>
           </v-btn>
                     
           <v-btn
             href=""
-            target="_blank"
             text
+            to="/profile"
           >
             <span class="mr-2">Vrienden</span>
           </v-btn>
