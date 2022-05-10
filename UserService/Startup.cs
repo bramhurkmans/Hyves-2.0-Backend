@@ -8,12 +8,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using UserService.AsyncDataServices;
+using UserService.Data;
 
 namespace UserService
 {
@@ -29,6 +32,8 @@ namespace UserService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(opt => 
+                opt.UseSqlServer(Configuration.GetConnectionString("DbConn")));
 
             services.AddControllers();
 
@@ -56,6 +61,13 @@ namespace UserService
             });
 
             services.AddTransient<IClaimsTransformation, ClaimsTransformer>();
+
+            services.AddScoped<IUserRepo, UserRepo>();
+
+            services.AddSingleton<IMessageBusClient, MessageBusClient>();
+
+            services.AddControllers();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddSwaggerGen(c =>
             {
