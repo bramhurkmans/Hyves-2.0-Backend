@@ -1,4 +1,4 @@
-namespace UserService.Dtos
+namespace ProfileService.Dtos
 {
     public class UserPublishedDto
     {

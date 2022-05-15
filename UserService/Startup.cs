@@ -63,10 +63,10 @@ namespace UserService
             services.AddTransient<IClaimsTransformation, ClaimsTransformer>();
 
             services.AddScoped<IUserRepo, UserRepo>();
+            services.AddScoped<IFriendshipRepo, FriendshipRepo>();
 
             services.AddSingleton<IMessageBusClient, MessageBusClient>();
-
-            services.AddControllers();
+            
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddSwaggerGen(c =>

@@ -29,7 +29,7 @@ namespace UserService.Controllers
 
         [HttpGet("me")]
         [Authorize]
-        public ActionResult<string> Get()
+        public ActionResult<string> GetCurrentUser()
         {
             return this.User.Identity.Name;
         }
