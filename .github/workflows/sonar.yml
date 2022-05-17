@@ -22,3 +22,6 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
         projectBaseDir: UserService
+        args: >
+          -Dsonar.organization=bramhurkmans
+          -Dsonar.projectKey=UserService_Hyves-2.0-Backend
