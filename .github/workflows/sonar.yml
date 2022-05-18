@@ -13,18 +13,15 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Sonarscanner for dotnet
-      uses: Secbyte/dotnet-sonarscanner@v2.3
+    - name: SonarScanner for .NET 6 with pull request decoration support
+      uses: highbyte/sonarscan-dotnet@v2.1.2
       with:
-        buildCommand: dotnet build .
-        testCommand: dotnet test .
-        projectKey: UserService_Hyves-2.0-Backend
-        projectName: UserService_Hyves-2.0-Backend
-        sonarOrganisation: bramhurkmans
-        beginArguments: >
-            /d:sonar.verbose="true"
-            /d:sonar.cs.opencover.reportsPaths='"/path/to/coverage.xml","/path/to/coverage.2.xml"'
-            /d:sonar.coverage.exclusions='"**/*.cs","**/*.md"'
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # The key of the SonarQube project
+        sonarProjectKey: UserService_Hyves-2.0-Backend
+        # The name of the SonarQube project
+        sonarProjectName:  UserService_Hyves-2.0-Backend
+        # The name of the SonarQube organization in SonarCloud. For hosted SonarQube, skip this setting.
+        sonarOrganization: bramhurkmans
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
