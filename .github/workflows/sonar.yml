@@ -14,17 +14,12 @@ jobs:
         working-directory: ./UserService
     steps:
     - name: Sonarscanner for dotnet
-      uses: Secbyte/dotnet-sonarscanner@v2.3
+      uses: highbyte/sonarscan-dotnet@v2.1.2
       with:
-        buildCommand: dotnet build .
-#         testCommand: dotnet test .
-        projectKey: UserService_Hyves-2.0-Backend
-        projectName: UserService_Hyves-2.0-Backend
+        sonarProjectName: UserService_Hyves-2.0-Backend
+        sonarProjectKey: UserService_Hyves-2.0-Backend
         sonarOrganisation: bramhurkmans
-        beginArguments: >
-            /d:sonar.verbose="true"
-            /d:sonar.coverage.exclusions='"**/*.cs","**/*.md"'
-            UserService.csproj
+        sonarBeginArguments: "UserService.csproj"
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
