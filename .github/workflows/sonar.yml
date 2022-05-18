@@ -6,20 +6,22 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  build:
-    name: Build
+  sonarcloud:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./UserService
     steps:
-    - name: Sonarscanner for dotnet
-      uses: highbyte/sonarscan-dotnet@v2.1.2
+    - uses: actions/checkout@v2
       with:
-        sonarProjectName: UserService_Hyves-2.0-Backend
-        sonarProjectKey: UserService_Hyves-2.0-Backend
-        sonarOrganisation: bramhurkmans
-#         sonarBeginArguments: "UserService.csproj"
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: Analyze with SonarCloud
+      uses: sonarsource/sonarcloud-github-action@master
       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        projectBaseDir: UserService
+        args: >
+          -Dsonar.organization=bramhurkmans
+          -Dsonar.projectName=UserService_Hyves-2.0-Backend
+          -Dsonar.projectKey=UserService_Hyves-2.0-Backend
+          -Dsonar.verbose=true
