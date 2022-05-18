@@ -24,6 +24,7 @@ jobs:
         beginArguments: >
             /d:sonar.verbose="true"
             /d:sonar.coverage.exclusions='"**/*.cs","**/*.md"'
+            UserService.csproj
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
