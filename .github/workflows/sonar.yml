@@ -16,17 +16,16 @@ jobs:
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
-    - name: Analyze with SonarCloud
-      uses: Secbyte/dotnet-sonarscanner@v2.3
+    - name: SonarScanner for .NET 6 with pull request decoration support
+      uses: highbyte/sonarscan-dotnet@v2.1.2
       with:
-        buildCommand: dotnet build .
-    #     testCommand: dotnet test .
-        projectKey: UserService_Hyves-2.0-Backend
-        projectName: UserService_Hyves-2.0-Backend
-        sonarOrganisation: bramhurkmans
-        beginArguments: >
-            /d:sonar.coverage.exclusions='"**/*.cs","**/*.md"'
-            UserService.csproj
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # The key of the SonarQube project
+        sonarProjectKey: UserService_Hyves-2.0-Backend
+        # The name of the SonarQube project
+        sonarProjectName: UserService_Hyves-2.0-Backend
+        # The name of the SonarQube organization in SonarCloud. For hosted SonarQube, skip this setting.
+        sonarOrganization: bramhurkmans
+        dotnetDisableTests: true
+env:
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
