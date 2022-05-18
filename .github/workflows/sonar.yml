@@ -8,18 +8,16 @@ on:
 jobs:
   sonarcloud:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./UserService
     steps:
     - uses: actions/checkout@v2
       with:
+        path: ./UserService
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
     - name: SonarScanner for .NET 6 with pull request decoration support
+      
       uses: highbyte/sonarscan-dotnet@v2.1.2
       with:
-        path: ./UserService
         # The key of the SonarQube project
         sonarProjectKey: UserService_Hyves-2.0-Backend
         # The name of the SonarQube project
