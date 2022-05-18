@@ -24,4 +24,3 @@ jobs:
           -Dsonar.organization=bramhurkmans
           -Dsonar.projectName=UserService_Hyves-2.0-Backend
           -Dsonar.projectKey=UserService_Hyves-2.0-Backend
-          -Dsonar.verbose=true
