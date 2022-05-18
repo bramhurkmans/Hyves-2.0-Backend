@@ -4,6 +4,9 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+defaults:
+  run:
+    working-directory: ./UserService
 jobs:
   build:
     name: Build
@@ -41,6 +44,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"UserService_Hyves-2.0-Backend" /o:"bramhurkmans" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" ./UserService/UserService.csproj
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"UserService_Hyves-2.0-Backend" /o:"bramhurkmans" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" UserService.csproj
           dotnet build
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
