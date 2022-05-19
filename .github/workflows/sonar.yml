@@ -19,7 +19,7 @@ jobs:
         sonarProjectName: UserService_Hyves-2.0-Backend
         sonarProjectKey: UserService_Hyves-2.0-Backend
         sonarOrganisation: bramhurkmans
-        sonarBeginArguments: "/o:\"bramhurkmans\""
+        sonarBeginArguments: "/o:\"bramhurkmans\" UserService.csproj"
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
