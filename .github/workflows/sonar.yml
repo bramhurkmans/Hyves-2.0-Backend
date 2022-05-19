@@ -10,13 +10,17 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+    - name: checkout repo
+      uses: actions/checkout@v3
+    - name: ls
+      run: ls
     - name: Sonarscanner for dotnet
       uses: highbyte/sonarscan-dotnet@v2.1.2
       with:
         sonarProjectName: UserService_Hyves-2.0-Backend
         sonarProjectKey: UserService_Hyves-2.0-Backend
         sonarOrganisation: bramhurkmans
-        dotnetBuildArguments: /home/runner/work/Hyves-2.0-Backend/Hyves-2.0-Backend/UserService
+        dotnetBuildArguments: ${{ github.workspace }}/UserService
         sonarBeginArguments: "/o:\"bramhurkmans\""
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
