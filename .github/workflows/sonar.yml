@@ -16,7 +16,7 @@ jobs:
         sonarProjectName: UserService_Hyves-2.0-Backend
         sonarProjectKey: UserService_Hyves-2.0-Backend
         sonarOrganisation: bramhurkmans
-        dotnetBuildArguments: UserService
+        dotnetBuildArguments: ${GITHUB_WORKSPACE} UserService
         sonarBeginArguments: "/o:\"bramhurkmans\""
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
