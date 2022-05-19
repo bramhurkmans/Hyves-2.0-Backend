@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize, reopened]
 defaults:
   run:
-    working-directory: ./UserService
+    working-directory: ./CommandsService
 jobs:
   build:
     name: Build
@@ -45,6 +45,6 @@ jobs:
         shell: powershell
         run: |
           ls
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"UserService_Hyves-2.0-Backend" /o:"bramhurkmans" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" UserService.csproj
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"UserService_Hyves-2.0-Backend" /o:"bramhurkmans" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" CommandsService.csproj
 
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
