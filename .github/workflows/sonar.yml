@@ -9,9 +9,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./UserService
     steps:
     - name: Sonarscanner for dotnet
       uses: highbyte/sonarscan-dotnet@v2.1.2
@@ -19,7 +16,7 @@ jobs:
         sonarProjectName: UserService_Hyves-2.0-Backend
         sonarProjectKey: UserService_Hyves-2.0-Backend
         sonarOrganisation: bramhurkmans
-        dotnetBuildArguments: ./UserService
+        dotnetBuildArguments: -v d ./UserService
         sonarBeginArguments: "/o:\"bramhurkmans\""
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
