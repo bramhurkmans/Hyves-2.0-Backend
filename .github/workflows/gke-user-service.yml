@@ -27,9 +27,30 @@ env:
   IMAGE: userservice
 
 jobs:
+  sonarqube-analysis:
+    name: SonarQube Analysis
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v3
+    - name: ls
+      run: ls
+    - name: Sonarscanner for dotnet
+      uses: highbyte/sonarscan-dotnet@v2.1.2
+      with:
+        sonarProjectName: UserService_Hyves-2.0-Backend
+        sonarProjectKey: UserService_Hyves-2.0-Backend
+        sonarOrganisation: bramhurkmans
+        dotnetBuildArguments: ./UserService
+        sonarBeginArguments: "/o:\"bramhurkmans\""
+        dotnetDisableTests: true
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   setup-build-publish-deploy:
     name: UserService
     runs-on: ubuntu-latest
+    needs: sonarqube-analysis
 
     # Add "id-token" with the intended permissions.
     permissions:
