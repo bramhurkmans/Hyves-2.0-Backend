@@ -1,6 +1,14 @@
-[![GatewayService](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-gateway-service.yml/badge.svg)](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-gateway-service.yml)[![UserService](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-user-service.yml/badge.svg)](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-user-service.yml)[![FrontendService](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-frontend-service.yml/badge.svg)](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-frontend-service.yml)
-
 # Hyves-2.0-Backend
+
+## UserService
+[![UserService](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-user-service.yml/badge.svg)](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-user-service.yml)
+
+## Frontend
+[![FrontendService](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-frontend-service.yml/badge.svg)](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-frontend-service.yml)
+
+## Gateway
+[![GatewayService](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-gateway-service.yml/badge.svg)](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-gateway-service.yml)
+
 Individiual project for Semester 6.
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.3/deploy/static/provider/cloud/deploy.yaml
