@@ -40,7 +40,7 @@ jobs:
       with:
         sonarProjectName: UserService_Hyves-2.0-Backend
         sonarProjectKey: UserService_Hyves-2.0-Backend
-        sonarOrganisation: bramhurkmans
+        sonarOrganization: bramhurkmans
         dotnetBuildArguments: ./UserService
         sonarBeginArguments: "/o:\"bramhurkmans\""
         dotnetDisableTests: true
