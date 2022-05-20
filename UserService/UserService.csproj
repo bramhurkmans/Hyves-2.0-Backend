@@ -3,7 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ProjectGuid>{9914e85e-609b-4c31-afd5-9ae3edd54140}</ProjectGuid>
-	<RuntimeIdentifiers>win10-x64;win7-x86</RuntimeIdentifiers>
+    <RuntimeIdentifiers>win10-x64;win7-x86</RuntimeIdentifiers>
+    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
   </PropertyGroup>
 
   <ItemGroup>
