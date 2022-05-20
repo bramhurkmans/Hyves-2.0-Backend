@@ -1,7 +1,7 @@
 # Hyves-2.0-Backend
 
 ## UserService
-[![UserService](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-user-service.yml/badge.svg)](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-user-service.yml)
+[![UserService](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-user-service.yml/badge.svg)](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-user-service.yml)[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=UserService_Hyves-2.0-Backend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=UserService_Hyves-2.0-Backend)[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=UserService_Hyves-2.0-Backend&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=UserService_Hyves-2.0-Backend)[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=UserService_Hyves-2.0-Backend&metric=bugs)](https://sonarcloud.io/summary/new_code?id=UserService_Hyves-2.0-Backend)[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=UserService_Hyves-2.0-Backend&metric=coverage)](https://sonarcloud.io/summary/new_code?id=UserService_Hyves-2.0-Backend)[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=UserService_Hyves-2.0-Backend&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=UserService_Hyves-2.0-Backend)
 
 ## Frontend
 [![FrontendService](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-frontend-service.yml/badge.svg)](https://github.com/bramhurkmans/Hyves-2.0-Backend/actions/workflows/gke-frontend-service.yml)
