@@ -4,3 +4,5 @@ resources:
   - issuer.yaml
   - ingress-srv.yaml
   - oauth2-proxy.yaml
+  - local-pvc.yaml
+  - mssql-depl.yaml
