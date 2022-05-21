@@ -6,3 +6,4 @@ resources:
   - oauth2-proxy.yaml
   - local-pvc.yaml
   - rabbitmq-depl.yaml
+  - mssql-depl.yaml
