@@ -4,8 +4,9 @@ namespace UserService.Dtos
 {
     public class UserCreateDto
     {
-        [Required]
-        public string Name { get; set; }   
+        public string KeyCloakIdentifier { get; set; } 
+
+        public bool isPrivate { get; set; }
 
         public string FirstName { get; set; }   
 

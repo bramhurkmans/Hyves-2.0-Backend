@@ -13,9 +13,7 @@ namespace UserService.Profiles
 
             //For messaging
             CreateMap<UserReadDto, User>();
-
-            CreateMap<UserPublishedDto, User>();
-                //.ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id));
+            CreateMap<User, UserPublishedDto>();
         }
     }
 }

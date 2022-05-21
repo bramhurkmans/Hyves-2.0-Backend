@@ -9,6 +9,8 @@ namespace UserService.Data
 
         IEnumerable<User> GetAllUsers();
 
+        User GetUserByKeycloakIdentifier(string KeyCloakIdentifier);
+        
         User GetUserById(int id);
 
         void CreateUser(User user);

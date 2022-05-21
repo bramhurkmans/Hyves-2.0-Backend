@@ -1,6 +1,5 @@
 using AutoMapper;
 using ProfileService.Dtos;
-using ProfileService.Models;
 
 namespace ProfileService.Profiles
 {
@@ -8,8 +7,9 @@ namespace ProfileService.Profiles
     {
         public UsersProfile()
         {
-            //TODO: finish mappings
-            CreateMap<User, UserPublishedDto>();
+            CreateMap<ProfileService.Models.User, UserReadDto>();
+            CreateMap<UserPublishedDto, ProfileService.Models.User>()
+                .ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id));
         }
     }
 }

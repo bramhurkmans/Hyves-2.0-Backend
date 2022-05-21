@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
       k8s-app: oauth2-proxy
-  template:
+  template: 
     metadata:
       labels:
         k8s-app: oauth2-proxy
@@ -18,10 +18,10 @@ spec:
       containers:
       - args:
         - --provider=oidc
-        - --oidc-issuer-url=https://hyves2-keycloak.azurewebsites.net/auth/realms/Hyves2
+        - --oidc-issuer-url=https://keycloak.hyves.social/auth/realms/Hyves2
         - --upstream="file://dev/null"
         - --client-id=user
-        - --client-secret=7rjRtvBakgkHDHzkZXdPWLtiEdknkmbk
+        - --client-secret=NAoZ5bkSybLSCSF1D5NwCeooExhYMZm5
         - --cookie-secret=x-1vrrMhC-886ITuz8ySNw==
         # - --cookie-refresh=2m
         - --email-domain=*

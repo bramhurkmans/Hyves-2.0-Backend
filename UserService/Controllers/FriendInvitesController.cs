@@ -29,7 +29,16 @@ namespace UserService.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult<IEnumerable<UserReadDto>> getFriendInvites()
+        public ActionResult<IEnumerable<UserReadDto>> GetFriendInvites()
+        {
+            var userItems = _userRepo.GetAllUsers();
+
+            return Ok(_mapper.Map<IEnumerable<UserReadDto>>(userItems));
+        }
+
+        [HttpPost("accept")]
+        [Authorize]
+        public ActionResult<string> AcceptFriendInvite()
         {
             var userItems = _userRepo.GetAllUsers();
 

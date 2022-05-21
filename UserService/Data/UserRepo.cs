@@ -33,6 +33,11 @@ namespace UserService.Data
             return _context.Users.FirstOrDefault(p => p.Id == id);
         }
 
+        public User GetUserByKeycloakIdentifier(string KeyCloakIdentifier)
+        {
+            return _context.Users.FirstOrDefault(p => p.KeyCloakIdentifier == KeyCloakIdentifier);
+        }
+
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);

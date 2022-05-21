@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using UserService.AsyncDataServices;
 using UserService.Data;
+using UserService.Logic;
 
 namespace UserService
 {
@@ -35,7 +36,9 @@ namespace UserService
             services.AddDbContext<AppDbContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("DbConn")));
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
             services.AddHealthChecks();
 
@@ -62,6 +65,8 @@ namespace UserService
 
             services.AddTransient<IClaimsTransformation, ClaimsTransformer>();
 
+            services.AddScoped<IUserLogic, UserLogic>();
+            
             services.AddScoped<IUserRepo, UserRepo>();
             services.AddScoped<IFriendshipRepo, FriendshipRepo>();
 
