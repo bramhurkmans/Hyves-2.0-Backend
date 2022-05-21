@@ -18,6 +18,8 @@ namespace UserService.AsyncDataServices
             _config = config;
             var factory = new ConnectionFactory() { HostName = _config["RabbitMQHost"],
                 Port = int.Parse(_config["RabbitMQPort"]) };
+            
+            Console.WriteLine("Trying to connect...");
 
             try
             {
@@ -73,6 +75,11 @@ namespace UserService.AsyncDataServices
                 _channel.Close();
                 _connection.Close();
             }
+        }
+
+        public void Config()
+        {
+            Console.WriteLine("Messagebus configured!");
         }
     }
 }

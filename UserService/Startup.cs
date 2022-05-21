@@ -63,6 +63,7 @@ namespace UserService
                 };
             });
 
+            services.AddSingleton<IMessageBusClient, MessageBusClient>();
             services.AddTransient<IClaimsTransformation, ClaimsTransformer>();
 
             services.AddScoped<IUserLogic, UserLogic>();
@@ -70,7 +71,7 @@ namespace UserService
             services.AddScoped<IUserRepo, UserRepo>();
             services.AddScoped<IFriendshipRepo, FriendshipRepo>();
 
-            services.AddSingleton<IMessageBusClient, MessageBusClient>();
+            
             
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -81,7 +82,7 @@ namespace UserService
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMessageBusClient messageBusClient)
         {
             if (env.IsDevelopment())
             {
@@ -101,6 +102,8 @@ namespace UserService
             {
                 endpoints.MapControllers();
             });
+
+            messageBusClient.Config();
 
             PrepDb.PrepPopulation(app, env.IsProduction());
         }
