@@ -19,31 +19,10 @@ namespace UserService.Data
 
         private static void SeedData(AppDbContext context, bool isProd)
         {
-            if(isProd) {
-                Console.WriteLine("Migrating database...");
-                try {
-                    context.Database.Migrate();
-                } catch (Exception e) {
-                    Console.WriteLine($"Migration failed... {e.Message}");
-                }
-                
-            } else {
-                if(!context.Users.Any())
-                {
-                    Console.WriteLine("Seeding data...");
-
-                    // context.Users.AddRange(
-                    //     new User() { Name=".NET Core", Publisher="Bram Hurkmans", Cost="Free" },
-                    //     new User() { Name="Facebook", Publisher="The Zucc", Cost="Free" },
-                    //     new User() { Name="Hyves", Publisher="Geen idee", Cost="Free" }
-                    // );
-
-                    context.SaveChanges();
-                } 
-                else
-                {
-                    Console.WriteLine("Already filled with data!");
-                }
+            try {
+                context.Database.Migrate();
+            } catch (Exception e) {
+                Console.WriteLine($"Migration failed... {e.Message}");
             }
         }
     }

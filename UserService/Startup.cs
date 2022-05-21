@@ -101,6 +101,8 @@ namespace UserService
             {
                 endpoints.MapControllers();
             });
+
+            PrepDb.PrepPopulation(app, env.IsProduction());
         }
     }
 }
