@@ -34,7 +34,8 @@ namespace UserService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(opt => 
-                opt.UseSqlServer(Configuration.GetConnectionString("DbConn")));
+                opt.UseSqlServer("Server=mssql-clusterip-srv,1433;Initial Catalog=usersdb;User ID=sa;Password=pa55w0rd!;"));
+                //opt.UseSqlServer(Configuration.GetConnectionString("DbConn")));
 
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
