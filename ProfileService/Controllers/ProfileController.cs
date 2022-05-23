@@ -14,7 +14,7 @@ namespace ProfileService.Controllers
     [ApiController]
     public class ProfileController : ControllerBase
     {
-        private readonly IProfileRepo _profileRepo;
+        private IProfileRepo _profileRepo;
         private IMapper _mapper;
         private readonly IMessageBusClient _messageBusClient;
 
