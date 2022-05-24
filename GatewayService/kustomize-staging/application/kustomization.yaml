@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - issuer.yaml
+  - ingress-srv.yaml
+  - oauth2-proxy.yaml
+  - local-pvc.yaml
+  - rabbitmq-depl.yaml
+  - mssql-depl.yaml

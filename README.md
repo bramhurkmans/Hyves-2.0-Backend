@@ -22,3 +22,6 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!"
 
 helm install -f ./hyves2-chart/values.yaml hyves2-chart .\hyves2-chart\
+
+
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.2.0

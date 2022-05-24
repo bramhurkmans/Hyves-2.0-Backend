@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: oauth2-proxy
+  name: oauth2-proxy
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: oauth2-proxy
+  template:
+    metadata:
+      labels:
+        k8s-app: oauth2-proxy
+    spec:
+      containers:
+      - args:
+        - --provider=oidc
+        - --oidc-issuer-url=https://keycloak.hyves.social/auth/realms/Hyves2
+        - --upstream="file://dev/null"
+        - --client-id=user
+        - --client-secret=NAoZ5bkSybLSCSF1D5NwCeooExhYMZm5
+        - --cookie-secret=x-1vrrMhC-886ITuz8ySNw==
+        # - --cookie-refresh=2m
+        - --email-domain=*
+        # - --scope=openid profile email users
+        # - --cookie-domain=.localtest.me
+        # - --whitelist-domain=.localtest.me
+        - --skip-jwt-bearer-tokens=true
+        - --pass-authorization-header=true
+        - --pass-access-token=true
+        - --pass-user-headers=true
+        - --set-authorization-header=true
+        - --set-xauthrequest=true
+        - --http-address=0.0.0.0:4180
+        - --insecure-oidc-allow-unverified-email
+        - --skip-provider-button=true
+        - --request-logging=true
+        - --auth-logging=true
+        - --standard-logging=true
+        image: quay.io/oauth2-proxy/oauth2-proxy:latest
+        imagePullPolicy: Always
+        name: oauth2-proxy
+        ports:
+        - containerPort: 4180
+          protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: oauth2-proxy
+  name: oauth2-proxy
+  namespace: kube-system
+spec:
+  ports:
+  - name: http
+    port: 4180
+    protocol: TCP
+    targetPort: 4180
+  selector:
+    k8s-app: oauth2-proxy
