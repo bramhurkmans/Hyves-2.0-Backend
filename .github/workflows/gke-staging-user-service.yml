@@ -15,7 +15,7 @@ name: GKE Staging UserService
 on:
   push:
     branches:
-      - main
+      - staging
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
