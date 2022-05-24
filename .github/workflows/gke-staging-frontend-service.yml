@@ -20,8 +20,8 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GAR_LOCATION: europe-west4 # TODO: update region of the Artifact Registry
-  GKE_CLUSTER: hyves2-cluster    # TODO: update to cluster name
-  GKE_ZONE: europe-west3-a   # TODO: update to cluster zone
+  GKE_CLUSTER: hyves2-staging-cluster    # TODO: update to cluster name
+  GKE_ZONE: europe-central2-a   # TODO: update to cluster zone
   DEPLOYMENT_NAME: frontendservice # TODO: update to deployment name
   REPOSITORY: hyves2-registry # TODO: update to Artifact Registry docker repository
   IMAGE: frontendservice
