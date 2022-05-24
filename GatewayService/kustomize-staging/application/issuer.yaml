@@ -1,9 +1,5 @@
 apiVersion: cert-manager.io/v1
-<<<<<<< HEAD
-kind: ClusterIssuer
-=======
 kind: Issuer
->>>>>>> 5e898e7c2b9211a1732f1f1a74b718e9b25df17d
 metadata:
   name: letsencrypt-production
 spec:
