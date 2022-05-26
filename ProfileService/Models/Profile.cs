@@ -9,13 +9,14 @@ namespace ProfileService.Models
         [Required]
         public int Id { get; set; } 
 
-        [Required]
-        public User User { get; set; } 
+        public virtual User User { get; set; }
 
-        public Theme? Theme { get; set; } 
+        public int UserId { get; set; }
 
-        public ICollection<Song> Songs { get; set; }
+        public virtual Theme? Theme { get; set; } 
 
-        public ICollection<Hobby> Hobbies { get; set; }
+        public virtual ICollection<Song> Songs { get; set; }
+
+        public virtual ICollection<Hobby> Hobbies { get; set; }
     }
 }

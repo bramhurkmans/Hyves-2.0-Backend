@@ -10,7 +10,7 @@ using ProfileService.Models;
 
 namespace ProfileService.Controllers
 {
-    [Route("api/profiles/{profileId}[controller]")]
+    [Route("api/profiles/{profileId}/themes")]
     [ApiController]
     public class ThemeController : ControllerBase
     {
@@ -32,30 +32,6 @@ namespace ProfileService.Controllers
             var themeItem = _themeRepo.GetThemeByProfileId(profileId);
 
             return Ok(_mapper.Map<ThemeReadDto>(themeItem));
-        }
-
-        [HttpGet("{themeId}", Name = "GetThemeById")]
-        public ActionResult<ThemeReadDto> GetThemeById(int themeId)
-        {
-            Console.WriteLine("Getting theme...");
-            var themeItem = _themeRepo.GetThemeById(themeId);
-
-            if(themeItem == null) {
-                return NotFound();
-            }
-
-            return Ok(_mapper.Map<ThemeReadDto>(themeItem));
-        }
-
-        [HttpDelete("{themeId}")]
-        public async Task<ActionResult<ThemeReadDto>> RemoveTheme(int themeId)
-        {
-            Console.WriteLine("Removing theme...");
-
-            _themeRepo.RemoveTheme(themeId);
-            _themeRepo.SaveChanges();
-
-            return NoContent();
         }
     } 
 }

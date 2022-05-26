@@ -11,6 +11,8 @@ namespace ProfileService.Data
 
         User GetUserById(int id);
 
+        User GetUserByKeycloakIdentifier(string keyCloakIdentifier);
+
         void CreateUser(User user);
 
         bool ExternalUserExists(int externalUserId);

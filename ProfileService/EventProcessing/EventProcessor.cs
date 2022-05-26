@@ -37,6 +37,7 @@ namespace ProfileService.EventProcessing
             using(var scope = _scopeFactory.CreateScope())
             {
                 var repo = scope.ServiceProvider.GetRequiredService<IUserRepo>();
+                var profileRepo = scope.ServiceProvider.GetRequiredService<IProfileRepo>();
 
                 var UserPublishedDto = JsonSerializer.Deserialize<UserPublishedDto>(userPublishedMessage);
 
@@ -46,8 +47,18 @@ namespace ProfileService.EventProcessing
 
                     if(!repo.ExternalUserExists(user.ExternalId))
                     {
-                        repo.CreateUser(user);
+                        repo.CreateUser(new User()
+                        {
+                            ExternalId = user.ExternalId,
+                            Profile = new Models.Profile() { Theme = new Theme() },
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            KeyCloakIdentifier = user.KeyCloakIdentifier,
+                            IsPrivate = user.IsPrivate
+                        }); ;
+
                         repo.SaveChanges();
+
                         Console.WriteLine("New user added!");
                     }
                     else

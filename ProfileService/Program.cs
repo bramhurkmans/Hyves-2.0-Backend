@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using ProfileService.EventProcessing;
 using Microsoft.EntityFrameworkCore;
+using ProfileService.Logic;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,8 +22,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHostedService<MessageBusSubscriber>();
 
 builder.Services.AddSingleton<IEventProcessor, EventProcessor>();
-
-builder.Services.AddHealthChecks();
 
 builder.Services.AddHealthChecks();
 
@@ -49,6 +48,9 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddTransient<IClaimsTransformation, ClaimsTransformer>();
 
+builder.Services.AddScoped<IUserLogic, UserLogic>();
+builder.Services.AddScoped<IHobbyLogic, HobbyLogic>();
+
 builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<IProfileRepo, ProfileRepo>();
 builder.Services.AddScoped<IHobbyRepo, HobbyRepo>();
@@ -70,8 +72,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+PrepDb.PrepPopulation(app, app.Environment.IsProduction());
 
 app.Run();

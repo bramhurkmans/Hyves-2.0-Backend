@@ -14,13 +14,13 @@ namespace UserService.Controllers
 {
     [ApiController]
     [Route("/api/users/{id}/[controller]")]
-    public class FriendInvitesController : ControllerBase
+    public class FriendController : ControllerBase
     {
         private readonly IUserRepo _userRepo;
         private IMapper _mapper;
         private readonly IMessageBusClient _messageBusClient;
 
-        public FriendInvitesController(IUserRepo userRepo, IMapper mapper, IMessageBusClient messageBusClient)
+        public FriendController(IUserRepo userRepo, IMapper mapper, IMessageBusClient messageBusClient)
         {
             _userRepo = userRepo;
             _mapper = mapper;
@@ -29,16 +29,14 @@ namespace UserService.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult<IEnumerable<UserReadDto>> GetFriendInvites()
+        public ActionResult<string> Get()
         {
-            var userItems = _userRepo.GetAllUsers();
-
-            return Ok(_mapper.Map<IEnumerable<UserReadDto>>(userItems));
+            return this.User.Identity.Name;
         }
 
-        [HttpPost("accept")]
+        [HttpGet("{userId}", Name = "GetFriendsByUserId")]
         [Authorize]
-        public ActionResult<string> AcceptFriendInvite()
+        public ActionResult<IEnumerable<UserReadDto>> getFriends()
         {
             var userItems = _userRepo.GetAllUsers();
 

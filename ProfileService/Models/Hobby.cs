@@ -11,6 +11,9 @@ namespace ProfileService.Models
 
         public string Name { get; set; }
 
-        public Profile Profile { get; set; }
+        public virtual Profile Profile { get; set; }
+
+        public int ProfileId { get; set; }
+
     }
 }

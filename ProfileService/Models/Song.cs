@@ -13,6 +13,8 @@ namespace ProfileService.Models
 
         public string Title { get; set; }
 
-        public Profile Profile { get; set; }
+        public virtual Profile Profile { get; set; }
+
+        public int ProfileId { get; set; }
     }
 }

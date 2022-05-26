@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProfileService.AsyncDataServices;
 using ProfileService.Data;
 using ProfileService.Dtos;
+using ProfileService.Logic;
 using ProfileService.Models;
 
 namespace ProfileService.Controllers
@@ -14,13 +15,13 @@ namespace ProfileService.Controllers
     [ApiController]
     public class SongController : ControllerBase
     {
-        private readonly ISongRepo _songRepo;
+        private readonly ISongLogic _songLogic;
         private IMapper _mapper;
         private readonly IMessageBusClient _messageBusClient;
 
-        public SongController(ISongRepo songRepo, IMapper mapper, IMessageBusClient messageBusClient)
+        public SongController(ISongLogic songLogic, IMapper mapper, IMessageBusClient messageBusClient)
         {
-            _songRepo = songRepo;
+            _songLogic = songLogic;
             _mapper = mapper;
             _messageBusClient = messageBusClient;
         }
@@ -29,22 +30,9 @@ namespace ProfileService.Controllers
         public ActionResult<IEnumerable<SongReadDto>> GetSongsByProfile(int profileId)
         {
             Console.WriteLine("Getting songs...");
-            var songItems = _songRepo.getSongsByProfileId(profileId);
+            var songItems = _songLogic.GetSongs(this.User, profileId);
 
             return Ok(_mapper.Map<IEnumerable<SongReadDto>>(songItems));
-        }
-
-        [HttpGet("{songId}", Name = "GetSongById")]
-        public ActionResult<SongReadDto> GetSongById(int songId)
-        {
-            Console.WriteLine("Getting song...");
-            var songItem = _songRepo.GetSongById(songId);
-
-            if(songItem == null) {
-                return NotFound();
-            }
-
-            return Ok(_mapper.Map<SongReadDto>(songItem));
         }
 
         [HttpPost]
@@ -53,12 +41,11 @@ namespace ProfileService.Controllers
             Console.WriteLine("Creating song...");
 
             var songModel = _mapper.Map<Song>(songCreateDto);
-            _songRepo.CreateSong(songModel);
-            _songRepo.SaveChanges();
+            _songLogic.CreateSong(this.User, songModel);
 
             var songReadDto = _mapper.Map<SongReadDto>(songModel);
 
-            return CreatedAtRoute(nameof(GetSongById), new { Id = songReadDto.Id }, songReadDto);
+            return CreatedAtRoute(null, new { Id = songReadDto.Id }, songReadDto);
         }
 
         [HttpDelete("{songId}")]
@@ -66,8 +53,7 @@ namespace ProfileService.Controllers
         {
             Console.WriteLine("Removing song...");
 
-            _songRepo.RemoveSong(songId);
-            _songRepo.SaveChanges();
+            _songLogic.DeleteSong(this.User, songId);
 
             return NoContent();
         }

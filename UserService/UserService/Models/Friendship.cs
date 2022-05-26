@@ -27,8 +27,7 @@ namespace UserService.Models
 
     public enum FriendRequestFlag
     {
-        None,
-        Approved,
-        Rejected
+        Waiting,
+        Approved
     };
 }

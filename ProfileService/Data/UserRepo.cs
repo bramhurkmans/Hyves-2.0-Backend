@@ -42,5 +42,10 @@ namespace ProfileService.Data
         {
             return (_context.SaveChanges() >= 0);
         }
+
+        public User GetUserByKeycloakIdentifier(string keyCloakIdentifier)
+        {
+            return _context.Users.FirstOrDefault(p => p.KeyCloakIdentifier == keyCloakIdentifier);
+        }
     }
 }

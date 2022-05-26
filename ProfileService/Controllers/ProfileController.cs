@@ -10,7 +10,7 @@ using ProfileService.Models;
 
 namespace ProfileService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/profiles")]
     [ApiController]
     public class ProfileController : ControllerBase
     {
