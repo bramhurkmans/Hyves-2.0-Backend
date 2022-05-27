@@ -16,7 +16,7 @@ using UserService.Logic;
 namespace UserService.Controllers
 {
     [ApiController]
-    [Route("/api/[controller]")]
+    [Route("/api/users")]
         public class UserController : ControllerBase
         {
         private readonly IUserLogic _userLogic;
