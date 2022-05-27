@@ -40,6 +40,7 @@ spec:
         - --request-logging=true
         - --auth-logging=true
         - --standard-logging=true
+        - --skip-jwt-bearer-tokens
         image: quay.io/oauth2-proxy/oauth2-proxy:latest
         imagePullPolicy: Always
         name: oauth2-proxy
