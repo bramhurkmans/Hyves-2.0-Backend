@@ -13,34 +13,46 @@ using UserService.Dtos;
 namespace UserService.Controllers
 {
     [ApiController]
-    [Route("/api/users/{id}/[controller]")]
-    public class FriendController : ControllerBase
+    [Route("/api/users/friendships")]
+    public class FriendshipController : ControllerBase
     {
         private readonly IUserRepo _userRepo;
         private IMapper _mapper;
         private readonly IMessageBusClient _messageBusClient;
 
-        public FriendController(IUserRepo userRepo, IMapper mapper, IMessageBusClient messageBusClient)
+        public FriendshipController(IUserRepo userRepo, IMapper mapper, IMessageBusClient messageBusClient)
         {
             _userRepo = userRepo;
             _mapper = mapper;
             _messageBusClient = messageBusClient;
         }
 
-        [HttpGet]
+        [HttpPost("send/{userId}")]
         [Authorize]
-        public ActionResult<string> Get()
+        public ActionResult<string> sendRequest()
         {
             return this.User.Identity.Name;
         }
 
-        [HttpGet("{userId}", Name = "GetFriendsByUserId")]
+        [HttpPost("accept/{friendshipId}")]
         [Authorize]
-        public ActionResult<IEnumerable<UserReadDto>> getFriends()
+        public ActionResult<string> acceptFriendShipRequest()
         {
-            var userItems = _userRepo.GetAllUsers();
+            return this.User.Identity.Name;
+        }
 
-            return Ok(_mapper.Map<IEnumerable<UserReadDto>>(userItems));
+        [HttpPost("decline/{friendshipId}")]
+        [Authorize]
+        public ActionResult<string> declineFriendShipRequest()
+        {
+            return this.User.Identity.Name;
+        }
+
+        [HttpDelete("{friendshipId}")]
+        [Authorize]
+        public ActionResult<string> removeFriendShip()
+        {
+            return this.User.Identity.Name;
         }
     }
 }
