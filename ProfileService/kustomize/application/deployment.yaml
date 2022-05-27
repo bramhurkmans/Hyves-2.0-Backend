@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: profileservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: profileservice
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: profileservice
+    spec:
+      containers:
+        - name: profileservice
+          image: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            failureThreshold: 1
+            initialDelaySeconds: 15
+            periodSeconds: 5
