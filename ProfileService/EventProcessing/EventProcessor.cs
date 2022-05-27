@@ -50,7 +50,12 @@ namespace ProfileService.EventProcessing
                         repo.CreateUser(new User()
                         {
                             ExternalId = user.ExternalId,
-                            Profile = new Models.Profile() { Theme = new Theme() },
+                            Profile = new Models.Profile() { Theme = new Theme()
+                            {
+                                PrimaryColor = "#FF0000",
+                                SecondaryColor = "#0000FF",
+                                TextColor = "#000000"
+                            } },
                             FirstName = user.FirstName,
                             LastName = user.LastName,
                             KeyCloakIdentifier = user.KeyCloakIdentifier,
