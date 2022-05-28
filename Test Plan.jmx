@@ -16,8 +16,8 @@
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
-        <stringProp name="HTTPSampler.domain">localhost</stringProp>
-        <stringProp name="HTTPSampler.port">6001</stringProp>
+        <stringProp name="HTTPSampler.domain">staging.hyves.social</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
         <stringProp name="HTTPSampler.contentEncoding"></stringProp>
         <stringProp name="HTTPSampler.path"></stringProp>
@@ -30,7 +30,7 @@
         <collectionProp name="HeaderManager.headers">
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">Authorization</stringProp>
-            <stringProp name="Header.value">Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJKTks5cEk1aFdjRm5oVWVraFlPYi1hM0hxcWJPZHJ0SlVGeS1ZeGFMdmFvIn0.eyJleHAiOjE2NTM3MDk0MTMsImlhdCI6MTY1MzY3MzQxMywiYXV0aF90aW1lIjoxNjUzNjczNDEzLCJqdGkiOiJkMzUyMjA5Yi01MmI2LTQ5MTctODgxMS1mZTUzYThkYTgxMzUiLCJpc3MiOiJodHRwczovL2tleWNsb2FrLmh5dmVzLnNvY2lhbC9hdXRoL3JlYWxtcy9IeXZlczIiLCJhdWQiOlsidXNlciIsImFjY291bnQiXSwic3ViIjoiZTRmOTNlMWUtYmMzMi00ZDhmLTliNmQtMjI3NzA2ODlhMzVkIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoidXNlciIsInNlc3Npb25fc3RhdGUiOiJmMTgwYjY5ZS05ZGVkLTQ1N2QtYWQxYy04N2M4MDI0OTlhNTYiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1oeXZlczIiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiZjE4MGI2OWUtOWRlZC00NTdkLWFkMWMtODdjODAyNDk5YTU2IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidGVzdCB0ZXN0IiwiZ3JvdXBzIjpbXSwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QubmwifQ.eI5Olg5nVdOmN1fy88e4qJxABgZUO7qjN0iWtCkNoyXOnWvYbg4_XCax8mBHmr3KR_VPWQt0gCuVRJ3t1l5MkxWy5N-Oja-9nVRR9as0loW8gnqafF2znMd4X2Cs_E_5cTRUSsgkJ5RCi_lGZtEusIMohFETwlArLEyBI17UIgE-C-buWD3A817J3onZBDppItGHZOG0xCPx5qkSFixqf88U6PRdvvEoPGdAaFF36vVB3mvKdjsU8mkkrEjdbluiJynTcVzHA1cImDc6orZlMbkhpDjngQm5-RkHZ6Vf9M-RMW2_0QnSTcddqEAKScdJEi0j3Y8w-T9HbvrdfAAu0g</stringProp>
+            <stringProp name="Header.value">Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJKTks5cEk1aFdjRm5oVWVraFlPYi1hM0hxcWJPZHJ0SlVGeS1ZeGFMdmFvIn0.eyJleHAiOjE2NTM3NzU5NzYsImlhdCI6MTY1MzczOTk3NiwiYXV0aF90aW1lIjoxNjUzNzM5OTc2LCJqdGkiOiI2M2YwNDY5Yi0xMjY4LTQ5NTItYTU3Yy01NTdhYWYxMGNkYWIiLCJpc3MiOiJodHRwczovL2tleWNsb2FrLmh5dmVzLnNvY2lhbC9hdXRoL3JlYWxtcy9IeXZlczIiLCJhdWQiOlsidXNlciIsImFjY291bnQiXSwic3ViIjoiZTRmOTNlMWUtYmMzMi00ZDhmLTliNmQtMjI3NzA2ODlhMzVkIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoidXNlciIsInNlc3Npb25fc3RhdGUiOiI5ZDU4MWQ1Ny0zMzgyLTQ4ZGItOGExYi0zYzU0MTEzODc5MTUiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1oeXZlczIiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiOWQ1ODFkNTctMzM4Mi00OGRiLThhMWItM2M1NDExMzg3OTE1IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidGVzdCB0ZXN0IiwiZ3JvdXBzIjpbXSwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdCIsImdpdmVuX25hbWUiOiJ0ZXN0IiwiZmFtaWx5X25hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QubmwifQ.Wvxcj9-Wa50WLzGfAUGjxCHCLTpUgTTRbXnZkRsyWeUiWxexKRtWVoD7s4uuCEApXhVW1ilm7h9DX7KOdgkooopnoXE5F9Ms2bKXvefXCeO9V4kOMPDT0WJJmaYjrXYnDjDkGAohLi0gMKmGFDr8XR96taifjyXk0SsDVP-Fvjo0OBmfZ0kq8E7SBjTr0vrPtA63RynAUxE9_EAFlGwKZdYoEmB-MP4MU6dXXUOU_XhSq8QpmLNpprnKlSRo3M8BBzSpebeauNQpUOl6-0GUEKFSwVqQeAGB7QTRGbHbEbDCwpfP-0eJg2LhmRuaVALwfI8CbofpA7WU0gz-8SuKwg</stringProp>
           </elementProp>
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">Content-Type</stringProp>
@@ -121,10 +121,10 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <intProp name="LoopController.loops">-1</intProp>
+          <stringProp name="LoopController.loops">120</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">100</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1000</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -139,7 +139,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/users/me</stringProp>
+          <stringProp name="HTTPSampler.path">/api/users/me</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
@@ -177,18 +177,7 @@
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
-        <hashTree>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-            <collectionProp name="Asserion.test_strings">
-              <stringProp name="96784904">error</stringProp>
-            </collectionProp>
-            <stringProp name="Assertion.custom_message"></stringProp>
-            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
-          </ResponseAssertion>
-          <hashTree/>
-        </hashTree>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get hobbies" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
