@@ -9,6 +9,7 @@ using ProfileService.Data;
 using ProfileService.Dtos;
 using ProfileService.Logic;
 using ProfileService.Models;
+using ProfileService.Pagination;
 
 namespace ProfileService.Controllers
 {
@@ -29,17 +30,24 @@ namespace ProfileService.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult<IEnumerable<HobbyReadDto>> GetHobbiesByProfile(int profileId)
+        public ActionResult<IEnumerable<HobbyReadDto>> GetHobbiesByProfile(int profileId, [FromQuery] PaginationFilter filter)
         {
             Console.WriteLine("Getting hobbies...");
-            var hobbyItems = _hobbyLogic.GetHobbies(this.User, profileId);
+            var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+            var hobbyItems = _hobbyLogic.GetHobbies(this.User, profileId)
+                                .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
+                                .Take(validFilter.PageSize)
+                                .ToList();
 
-            if(hobbyItems.Count == 0)
+            if (hobbyItems.Count == 0)
             {
                 return NoContent();
             }
+            
+            var pagedData = _mapper.Map<IEnumerable<HobbyReadDto>>(hobbyItems);
+            var totalRecords = pagedData.Count();
 
-            return Ok(_mapper.Map<IEnumerable<HobbyReadDto>>(hobbyItems));
+            return Ok(new PagedResponse<IEnumerable<HobbyReadDto>>(pagedData, validFilter.PageNumber, validFilter.PageSize));
         }
 
 
