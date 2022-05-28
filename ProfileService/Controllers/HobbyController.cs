@@ -32,7 +32,7 @@ namespace ProfileService.Controllers
         [Authorize]
         public ActionResult<IEnumerable<HobbyReadDto>> GetHobbiesByProfile(int profileId, [FromQuery] PaginationFilter filter)
         {
-            Console.WriteLine("Getting hobbies...");
+            Console.WriteLine("Getting hobbies..");
             var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
             var hobbyItems = _hobbyLogic.GetHobbies(this.User, profileId)
                                 .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
