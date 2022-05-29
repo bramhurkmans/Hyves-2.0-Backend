@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UserService.Migrations
 {
-    public partial class AddedUsers : Migration
+    public partial class AddedfriendshipUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,19 +15,16 @@ namespace UserService.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    KeyCloakIdentifier = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    isPrivate = table.Column<bool>(type: "bit", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: true)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -37,7 +34,7 @@ namespace UserService.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RequestedBy_Id = table.Column<int>(type: "int", nullable: true),
-                    RequestedToId = table.Column<int>(type: "int", nullable: false),
+                    RequestedTo_Id = table.Column<int>(type: "int", nullable: false),
                     RequestTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FriendRequestFlag = table.Column<int>(type: "int", nullable: false)
                 },
@@ -50,8 +47,8 @@ namespace UserService.Migrations
                         principalTable: "Users",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Friendships_Users_RequestedToId",
-                        column: x => x.RequestedToId,
+                        name: "FK_Friendships_Users_RequestedTo_Id",
+                        column: x => x.RequestedTo_Id,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -63,14 +60,9 @@ namespace UserService.Migrations
                 column: "RequestedBy_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Friendships_RequestedToId",
+                name: "IX_Friendships_RequestedTo_Id",
                 table: "Friendships",
-                column: "RequestedToId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_UserId",
-                table: "Users",
-                column: "UserId");
+                column: "RequestedTo_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

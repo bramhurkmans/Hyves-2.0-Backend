@@ -9,8 +9,14 @@ namespace UserService.Data
 
         IEnumerable<Friendship> GetAllFriendships();
 
+        IEnumerable<Friendship> GetFriendshipByUser(User user);
+
         Friendship GetFriendshipById(int id);
 
         void CreateFriendship(Friendship friendship);
+
+        void RemoveFriendship(Friendship friendship);
+
+        void UpdateFriendship(Friendship friendship);
     }
 }

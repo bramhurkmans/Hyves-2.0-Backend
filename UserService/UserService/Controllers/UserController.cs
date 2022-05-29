@@ -34,11 +34,22 @@ namespace UserService.Controllers
 
         [HttpGet("me")]
         [Authorize]
-        public ActionResult<string> GetCurrentUser()
+        public ActionResult<UserReadDto> GetCurrentUser()
         {
             var user = _userLogic.GetUser(this.User);
+            var userReadDto = _mapper.Map<UserReadDto>(user);
 
-            return Ok(user);
+            return Ok(userReadDto);
+        }
+
+        [HttpGet("search/{query}")]
+        [Authorize]
+        public ActionResult<IEnumerable<UserReadDto>> SearchUsers(string query)
+        {
+            var users = _userLogic.FindUsers(query);
+            var userReadDtos = _mapper.Map<IEnumerable<UserReadDto>>(users);
+
+            return Ok(userReadDtos);
         }
 
         // [HttpGet]

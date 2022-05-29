@@ -40,14 +40,15 @@ namespace UserService.Migrations
                     b.Property<int?>("RequestedBy_Id")
                         .HasColumnType("int");
 
-                    b.Property<int>("RequestedToId")
+                    b.Property<int?>("RequestedTo_Id")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RequestedBy_Id");
 
-                    b.HasIndex("RequestedToId");
+                    b.HasIndex("RequestedTo_Id");
 
                     b.ToTable("Friendships");
                 });
@@ -76,9 +77,6 @@ namespace UserService.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -87,8 +85,6 @@ namespace UserService.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Users");
                 });
@@ -101,25 +97,13 @@ namespace UserService.Migrations
 
                     b.HasOne("UserService.Models.User", "RequestedTo")
                         .WithMany()
-                        .HasForeignKey("RequestedToId")
+                        .HasForeignKey("RequestedTo_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("RequestedBy");
 
                     b.Navigation("RequestedTo");
-                });
-
-            modelBuilder.Entity("UserService.Models.User", b =>
-                {
-                    b.HasOne("UserService.Models.User", null)
-                        .WithMany("Friends")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("UserService.Models.User", b =>
-                {
-                    b.Navigation("Friends");
                 });
 #pragma warning restore 612, 618
         }

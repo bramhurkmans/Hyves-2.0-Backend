@@ -11,9 +11,12 @@ namespace UserService.Models
         public virtual int Id { get; set; }
 
         [ForeignKey("RequestedBy")]
-        public virtual int? RequestedBy_Id { get; set; }
+        public int? RequestedBy_Id { get; set; }
 
         public virtual User RequestedBy { get; set; }
+
+        [ForeignKey("RequestedTo")]
+        public int? RequestedTo_Id { get; set; }
 
         [Required]
         public virtual User RequestedTo { get; set; }

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using AutoMapper;
 using UserService.AsyncDataServices;
@@ -19,6 +21,12 @@ namespace UserService.Logic
             _messageBusClient = messageBusClient;
             _mapper = mapper;
         }
+
+        public IEnumerable<User> FindUsers(string query)
+        {
+            return _userRepo.GetAllUsers().Where(u => u.FirstName == query);
+        }
+
         public User GetUser(ClaimsPrincipal claimsPrincipal)
         {
             var user = _userRepo.GetUserByKeycloakIdentifier(claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value);
@@ -47,6 +55,11 @@ namespace UserService.Logic
             }
 
             return user;
+        }
+
+        public User GetUser(int userId)
+        {
+            return _userRepo.GetUserById(userId);
         }
     }
 }

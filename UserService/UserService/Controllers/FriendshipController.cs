@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using UserService.AsyncDataServices;
 using UserService.Data;
 using UserService.Dtos;
+using UserService.Logic;
 
 namespace UserService.Controllers
 {
@@ -16,43 +17,94 @@ namespace UserService.Controllers
     [Route("/api/users/friendships")]
     public class FriendshipController : ControllerBase
     {
-        private readonly IUserRepo _userRepo;
+        private readonly IFriendLogic _friendLogic;
+        private readonly IUserLogic _userLogic;
         private IMapper _mapper;
         private readonly IMessageBusClient _messageBusClient;
 
-        public FriendshipController(IUserRepo userRepo, IMapper mapper, IMessageBusClient messageBusClient)
+        public FriendshipController(IFriendLogic friendLogic, IUserLogic userLogic, IMapper mapper, IMessageBusClient messageBusClient)
         {
-            _userRepo = userRepo;
+            _friendLogic = friendLogic;
+            _userLogic = userLogic;
             _mapper = mapper;
             _messageBusClient = messageBusClient;
         }
 
-        [HttpPost("send/{userId}")]
+        [HttpPost("/send/{userId}")]
         [Authorize]
-        public ActionResult<string> sendRequest()
+        public ActionResult SendRequest(int userId)
         {
-            return this.User.Identity.Name;
+            if(_friendLogic.Send(this.User, userId))
+            {
+                return NoContent();
+            }
+
+            return BadRequest();
         }
 
-        [HttpPost("accept/{friendshipId}")]
+        [HttpPost("/accept/{friendshipId}")]
         [Authorize]
-        public ActionResult<string> acceptFriendShipRequest()
+        public ActionResult AcceptFriendShipRequest(int friendshipId)
         {
-            return this.User.Identity.Name;
+            if (_friendLogic.Accept(this.User, friendshipId))
+            {
+                return NoContent();
+            }
+
+            return BadRequest();
         }
 
-        [HttpPost("decline/{friendshipId}")]
+        [HttpPost("/decline/{friendshipId}")]
         [Authorize]
-        public ActionResult<string> declineFriendShipRequest()
+        public ActionResult DeclineFriendShipRequest(int friendshipId)
         {
-            return this.User.Identity.Name;
+            if (_friendLogic.Decline(this.User, friendshipId))
+            {
+                return NoContent();
+            }
+
+            return BadRequest();
         }
 
-        [HttpDelete("{friendshipId}")]
+        [HttpDelete("/{friendshipId}")]
         [Authorize]
-        public ActionResult<string> removeFriendShip()
+        public ActionResult RemoveFriendShip(int friendshipId)
         {
-            return this.User.Identity.Name;
+            if (_friendLogic.Delete(this.User, friendshipId))
+            {
+                return NoContent();
+            }
+
+            return BadRequest();
+        }
+
+        [HttpGet("/friends/{userId}")]
+        [Authorize]
+        public ActionResult ListFriendships(int userId)
+        {
+            var friendships = _friendLogic.List(userId).Where(f => f.FriendRequestFlag == Models.FriendRequestFlag.Approved);
+
+            if(friendships.Count() == 0)
+            {
+                return NoContent();
+            }
+
+            return Ok(friendships);
+        }
+
+
+        [HttpGet("/waiting/{userId}")]
+        [Authorize]
+        public ActionResult ListWaitingFriendships(int userId)
+        {
+            var friendships = _friendLogic.List(userId).Where(f => f.FriendRequestFlag == Models.FriendRequestFlag.Waiting);
+
+            if (friendships.Count() == 0)
+            {
+                return NoContent();
+            }
+
+            return Ok(friendships);
         }
     }
 }
