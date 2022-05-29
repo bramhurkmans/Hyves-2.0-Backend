@@ -6,7 +6,7 @@
 ## ProfileService
 
 
-## FeedService
+## KrabbelService
 
 
 ## Frontend
