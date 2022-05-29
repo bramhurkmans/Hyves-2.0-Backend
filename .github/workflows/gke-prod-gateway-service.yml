@@ -15,12 +15,12 @@ name: GKE Prod GatewayService
 on:
   push:
     branches:
-      - staging
+      - main
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GAR_LOCATION: europe-west4 # TODO: update region of the Artifact Registry
-  GKE_CLUSTER: hyves2-staging-cluster    # TODO: update to cluster name
+  GKE_CLUSTER: hyves2-cluster    # TODO: update to cluster name
   GKE_ZONE: europe-west3-a   # TODO: update to cluster zone
 
 jobs:
