@@ -7,10 +7,12 @@ namespace KrabbelService.Data
     {
         public bool SaveChanges();
 
-        IEnumerable<Profile> GetAllProfiles();
+        IEnumerable<Krabbel> GetAllKrabbels();
 
-        Profile GetProfileById(int id);
+        Krabbel GetKrabbelById(int id);
 
-        void CreateProfile(Profile profile);
+        void CreateKrabbel(Krabbel krabbel);
+
+        void RemoveKrabbel(int id);
     }
 }

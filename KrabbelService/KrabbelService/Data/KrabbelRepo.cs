@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using KrabbelService.Models;
+using KrabbelService.Data;
 
 namespace KrabbelService.Data
 {
@@ -9,28 +10,35 @@ namespace KrabbelService.Data
     {
         private readonly AppDbContext _context;
 
-        public ProfileRepo(AppDbContext context)
+        public KrabbelRepo(AppDbContext context)
         {
             _context = context;
         }
 
-        public void CreateProfile(Profile profile)
+        public void CreateKrabbel(Krabbel krabbel)
         {
-            if(profile == null) {
-                throw new ArgumentNullException(nameof(profile));
+            if(krabbel == null) {
+                throw new ArgumentNullException(nameof(krabbel));
             }
 
-            _context.Add(profile);
+            _context.Add(krabbel);
         }
 
-        public IEnumerable<Profile> GetAllProfiles()
+        public IEnumerable<Krabbel> GetAllKrabbels()
         {
-            return _context.Profiles.ToList();
+            return _context.Krabbels.ToList();
         }
 
-        public Profile GetProfileById(int id)
+        public Krabbel GetKrabbelById(int id)
         {
-            return _context.Profiles.FirstOrDefault(p => p.Id == id);
+            return _context.Krabbels.FirstOrDefault(p => p.Id == id);
+        }
+
+        public void RemoveKrabbel(int id)
+        {
+            var krabbel = _context.Krabbels.FirstOrDefault(p => p.Id == id);
+
+            _context.Krabbels.Remove(krabbel);
         }
 
         public bool SaveChanges()

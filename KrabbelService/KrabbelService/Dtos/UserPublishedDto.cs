@@ -1,4 +1,4 @@
-namespace ProfileService.Dtos
+namespace KrabbelService.Dtos
 {
     public class UserPublishedDto
     {

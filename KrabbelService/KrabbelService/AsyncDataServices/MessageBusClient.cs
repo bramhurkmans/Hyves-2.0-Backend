@@ -35,9 +35,9 @@ namespace KrabbelService.AsyncDataServices
                 Console.WriteLine($"Could not connect to RabbitMQ: {ex.Message}");
             }
         }
-        public void PublishNewProfile(ProfilePublishedDto profilePublishedDto)
+        public void PublishNewKrabbel(KrabbelPublishedDto krabbelPublishedDto)
         {
-            var message = JsonSerializer.Serialize(profilePublishedDto);
+            var message = JsonSerializer.Serialize(krabbelPublishedDto);
 
             if(_connection.IsOpen)
             {
