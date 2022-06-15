@@ -1,13 +1,13 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace KrabbelService.Models
 {
     public class Krabbel
     {
-        [Key]
-        [Required]
-        public int Id { get; set; } 
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; } 
 
         public virtual User Sender { get; set; }
 

@@ -25,3 +25,5 @@ helm install -f ./hyves2-chart/values.yaml hyves2-chart .\hyves2-chart\
 
 
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.2.0
+
+mongo: adminuser:password123

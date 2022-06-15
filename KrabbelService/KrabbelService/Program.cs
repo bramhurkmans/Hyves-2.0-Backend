@@ -4,6 +4,7 @@ using KrabbelService.EventProcessing;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using MongoDB.Driver;
 using ProfileService.AsyncDataServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.Configure<DatabaseSettings>(
+    builder.Configuration.GetSection("MongoConnection"));
+
+builder.Services.AddSingleton<MongoContext>();
 
 builder.Services.AddHostedService<MessageBusSubscriber>();
 
@@ -67,7 +73,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
-PrepDb.PrepPopulation(app, app.Environment.IsProduction());
 
 app.Run();

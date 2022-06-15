@@ -1,14 +1,15 @@
 using KrabbelService.Models;
+using MongoDB.Driver;
 
 namespace KrabbelService.Data
 {
     public class UserRepo : IUserRepo
     {
-        private readonly AppDbContext _context;
+        private readonly IMongoCollection<User> _context;
 
-        public UserRepo(AppDbContext context)
+        public UserRepo(MongoContext context)
         {
-            _context = context;
+            _context = context.Database.GetCollection<User>(MongoCollectionNames.Users);
         }
 
         public void CreateUser(User user)
@@ -17,32 +18,38 @@ namespace KrabbelService.Data
                 throw new ArgumentNullException(nameof(user));
             }
 
-            _context.Add(user);
+            _context.InsertOne(user);
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            return _context.Users.ToList();
+            return _context.AsQueryable().ToList();
         }
 
         public User GetUserById(int id)
         {
-            return _context.Users.FirstOrDefault(p => p.Id == id);
+            var filter = Builders<User>.Filter.Where(k => k.Id == id);
+
+            return _context.Find(filter).FirstOrDefault();
         }
 
         public bool ExternalUserExists(int externalUserId)
         {
-            return _context.Users.Any(p => p.ExternalId == externalUserId);
+            var filter = Builders<User>.Filter.Where(k => k.ExternalId == externalUserId);
+
+            return _context.Find(filter).FirstOrDefault() != null;
         }
 
         public bool SaveChanges()
         {
-            return (_context.SaveChanges() >= 0);
+            return true;
         }
 
         public User GetUserByKeycloakIdentifier(string keyCloakIdentifier)
         {
-            return _context.Users.FirstOrDefault(p => p.KeyCloakIdentifier == keyCloakIdentifier);
+            var filter = Builders<User>.Filter.Where(k => k.KeyCloakIdentifier == keyCloakIdentifier);
+
+            return _context.Find(filter).FirstOrDefault();
         }
     }
 }
