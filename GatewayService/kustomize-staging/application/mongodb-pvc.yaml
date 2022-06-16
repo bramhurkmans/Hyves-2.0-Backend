@@ -1,11 +1,10 @@
 apiVersion: v1
-kind: PersistentVolume
+kind: PersistentVolumeClaim
 metadata:
   name: mongo-data
 spec:
   accessModes:
-    - ReadWriteOnce
-  capacity:
-    storage: 100Mi
-  hostPath:
-    path: /data/mongo
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 200Mi
