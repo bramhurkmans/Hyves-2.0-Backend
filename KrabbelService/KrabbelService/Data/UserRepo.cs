@@ -26,9 +26,16 @@ namespace KrabbelService.Data
             return _context.AsQueryable().ToList();
         }
 
-        public User GetUserById(int id)
+        public User GetUserById(string id)
         {
             var filter = Builders<User>.Filter.Where(k => k.Id == id);
+
+            return _context.Find(filter).FirstOrDefault();
+        }
+
+        public User GetUserByExternalId(int id)
+        {
+            var filter = Builders<User>.Filter.Where(k => k.ExternalId == id);
 
             return _context.Find(filter).FirstOrDefault();
         }

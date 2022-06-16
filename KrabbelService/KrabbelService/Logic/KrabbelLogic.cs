@@ -18,7 +18,7 @@ namespace KrabbelService.Logic
         public bool Createkrabbel(ClaimsPrincipal claimsPrincipal, int receiverId, string text)
         {
             var sender = _userRepo.GetUserByKeycloakIdentifier(claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value);
-            var receiver = _userRepo.GetUserById(receiverId);
+            var receiver = _userRepo.GetUserByExternalId(receiverId);
 
             if(sender == null || receiver == null) return false;
 
@@ -27,7 +27,7 @@ namespace KrabbelService.Logic
                 Text = text,
                 Sender = sender,
                 Receiver = receiver,
-
+                Date = DateTime.Now
             };
 
             _krabbelRepo.CreateKrabbel(krabbel);
@@ -51,11 +51,7 @@ namespace KrabbelService.Logic
 
         public ICollection<Krabbel> GetKrabbels(int userId)
         {
-            var user = _userRepo.GetUserById(userId);
-
-            if (user == null) return new List<Krabbel>();
-
-            return user.Krabbels;
+            return _krabbelRepo.GetAllKrabbels().Where(k => k.Receiver.ExternalId == userId).ToList();
         }
     }
 }

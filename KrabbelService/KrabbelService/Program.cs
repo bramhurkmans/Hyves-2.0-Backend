@@ -1,6 +1,7 @@
 using KrabbelService.AsyncDataServices;
 using KrabbelService.Data;
 using KrabbelService.EventProcessing;
+using KrabbelService.Logic;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -52,6 +53,8 @@ builder.Services.AddTransient<IClaimsTransformation, ClaimsTransformer>();
 
 builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<IKrabbelRepo, KrabbelRepo>();
+
+builder.Services.AddScoped<IKrabbelLogic, KrabbelLogic>();
 
 builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
 

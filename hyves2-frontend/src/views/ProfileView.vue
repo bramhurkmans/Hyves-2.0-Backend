@@ -31,10 +31,22 @@
         </v-card>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col cols="3">
+        <v-card
+          class="pa-2"
+          outlined
+          tile
+        >
+          <krabbel-section-component></krabbel-section-component>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
+import KrabbelSectionComponent from '@/components/krabbels/KrabbelSectionComponent.vue'
 import FriendsComponent from '../components/profile/FriendsComponent.vue'
 import ProfileComponent from '../components/profile/ProfileComponent.vue'
 import UserComponent from '../components/profile/UserComponent.vue'
@@ -45,7 +57,8 @@ import UserComponent from '../components/profile/UserComponent.vue'
     components: {
       FriendsComponent,
         UserComponent,
-        ProfileComponent
+        ProfileComponent,
+        KrabbelSectionComponent
     },
   }
 </script>

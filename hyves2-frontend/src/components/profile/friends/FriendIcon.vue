@@ -1,10 +1,10 @@
 <template>
     <v-container>
         <v-img
-            lazy-src="https://picsum.photos/id/11/10/6"
+            lazy-src="@/assets/default_profile_picture.jpeg"
             height="100"
             width="100"
-            src="https://picsum.photos/id/11/500/300"
+            src="@/assets/default_profile_picture.jpeg"
         ></v-img>
         <a>Friend name</a>
     </v-container>

@@ -9,7 +9,9 @@ namespace KrabbelService.Data
 
         IEnumerable<User> GetAllUsers();
 
-        User GetUserById(int id);
+        User GetUserById(string id);
+
+        User GetUserByExternalId(int id);
 
         User GetUserByKeycloakIdentifier(string keyCloakIdentifier);
 

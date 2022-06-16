@@ -1,3 +1,6 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -5,9 +8,11 @@ namespace KrabbelService.Models
 {
     public class User
     {
-        [Key]
-        [Required]
-        public int Id { get; set; }
+        [BsonElement("_id")]
+        [JsonProperty("_id")]
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         
         [Required]
         public int ExternalId { get; set; }
@@ -23,7 +28,5 @@ namespace KrabbelService.Models
 
         [Required]
         public string LastName { get; set; }
-
-        public virtual List<Krabbel> Krabbels { get; set; }
     }
 }

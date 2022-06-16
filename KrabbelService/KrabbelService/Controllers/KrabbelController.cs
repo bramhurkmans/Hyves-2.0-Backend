@@ -1,4 +1,8 @@
-﻿using KrabbelService.Data;
+﻿using AutoMapper;
+using KrabbelService.Data;
+using KrabbelService.Dtos;
+using KrabbelService.Logic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KrabbelService.Controllers
@@ -8,24 +12,42 @@ namespace KrabbelService.Controllers
     public class KrabbelController : Controller
     {
         private readonly ILogger<KrabbelController> _logger;
-        private readonly IKrabbelRepo _krabbelRepo;
+        private readonly IKrabbelLogic _krabbelLogic;
+        private IMapper _mapper;
 
-        public KrabbelController(ILogger<KrabbelController> logger, IKrabbelRepo krabbelRepo)
+        public KrabbelController(ILogger<KrabbelController> logger, IMapper mapper, IKrabbelLogic krabbelLogic)
         {
             _logger = logger;
-            _krabbelRepo = krabbelRepo;
+            _mapper = mapper;
+            _krabbelLogic = krabbelLogic;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpPost("users/{userId}")]
+        [Authorize]
+        public async Task<IActionResult> CreateKrabbel(int userId, KrabbelCreateDto krabbelCreateDto)
         {
-            _krabbelRepo.CreateKrabbel(new Models.Krabbel()
+            Console.WriteLine("Creating krabbel...");
+
+            if (_krabbelLogic.Createkrabbel(this.User, userId, krabbelCreateDto.Text))
             {
-                Text = "blablabla",
-                Sender = null,
-                Receiver = null,
-                Date = DateTime.Now
-            });
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+
+        [HttpGet("users/{userId}")]
+        public async Task<IActionResult> GetKrabbelsByUser(int userId)
+        {
+            var krabbels = _krabbelLogic.GetKrabbels(userId);
+
+            return Ok(krabbels);
+        }
+
+        [HttpDelete("{krabbelId}")]
+        public async Task<IActionResult> RemoveKrabbel(int krabbelId)
+        {
+            _krabbelLogic.RemoveKrabbel(this.User, krabbelId);
 
             return Ok();
         }

@@ -20,12 +20,10 @@ namespace UserService.Data
 
         private static void SeedData(AppDbContext context, bool isProd)
         {
-            if(isProd) {
-                try {
-                    context.Database.Migrate();
-                } catch (Exception e) {
-                    Console.WriteLine($"Migration failed... {e.Message}");
-                }
+            try {
+                context.Database.Migrate();
+            } catch (Exception e) {
+                Console.WriteLine($"Migration failed... {e.Message}");
             }
         }
     }

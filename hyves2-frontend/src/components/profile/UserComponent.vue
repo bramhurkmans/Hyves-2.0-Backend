@@ -2,8 +2,8 @@
   <v-container>
 
         <v-img
-        lazy-src="https://picsum.photos/id/11/10/6"
-        src="https://picsum.photos/id/11/500/300"
+        lazy-src="@/assets/default_profile_picture.jpeg"
+        src="@/assets/default_profile_picture.jpeg"
         ></v-img>
 
         <p class="text-md-center">Bram (666)</p>
