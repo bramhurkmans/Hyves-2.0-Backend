@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace KrabbelService.Controllers
 {
     [ApiController]
-    [Route("krabbels")]
+    [Route("api/krabbels")]
     public class KrabbelController : Controller
     {
         private readonly ILogger<KrabbelController> _logger;
