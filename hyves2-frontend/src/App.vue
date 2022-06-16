@@ -114,6 +114,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import JwtService from "./common/jwt.service"
 
 export default {
   name: 'App',
@@ -121,6 +123,29 @@ export default {
   data: () => ({
     //
   }),
+  created: function () {
+    // Set the auth token for any request
+    axios.interceptors.request.use(config => {
+      config.headers.Authorization = `Bearer ${JwtService.getToken()}`;
+      //config.baseURL = "http://127.0.0.1:8000"
+      config.baseURL = "https://staging.hyves.social"
+      return config;
+    });
+
+    // Last step: handle request error general case
+    axios.interceptors.response.use(
+      response => response,
+      error => {
+        // Error
+        const { response: { status } } = error;
+
+        if (status === 401) {
+          JwtService.destroyToken()
+          this.$router.push('/login')
+        }
+      }
+    );
+  },
 };
 </script>
 

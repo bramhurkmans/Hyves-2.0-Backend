@@ -24,7 +24,7 @@ import KrabbelForm from './KrabbelForm.vue'
     name: 'KrabbelSectionComponent',
     components: {
       KrabbelComponent,
-        KrabbelForm
+      KrabbelForm
     },
   }
 </script>

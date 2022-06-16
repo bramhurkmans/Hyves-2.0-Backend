@@ -10,8 +10,7 @@ const state = {
 };
 
 const getters = {
-  userInfo: state => state.userInfo,
-  krabbels: state => state.krabbels
+  getKrabbels: state => state.krabbels
 };
 
 const actions = {
@@ -30,21 +29,17 @@ const actions = {
   async [CREATE_KRABBEL](context, userId, text) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/krabbels/user/${userId}`, data: { Text: text }, method: 'POST' })
-        .then(resp => {
-            context.commit(SET_KRABBELS, resp)
-            resolve(resp)
+        .then({
         })
         .catch(err => {
             reject(err)
         })
     })
   },
-  async [DELETE_KRABBEL](context, krabbelId) {
+  async [DELETE_KRABBEL](krabbelId) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/krabbels/${krabbelId}`, data: null, method: 'DELETE' })
-        .then(resp => {
-            context.commit(SET_KRABBELS, resp)
-            resolve(resp)
+        .then({
         })
         .catch(err => {
             reject(err)

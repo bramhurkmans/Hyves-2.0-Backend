@@ -12,6 +12,8 @@ export const GET_USER_BY_ID = 'getUserById';
 
 export const GET_HOBBIES = 'getHobbies';
 export const CREATE_HOBBY = 'createHobby';
+export const DELETE_HOBBY = 'deleteHobby';
 
 export const GET_SONGS = 'getSongs';
 export const CREATE_SONG = 'createSong';
+export const DELETE_SONG = 'deleteSong';
