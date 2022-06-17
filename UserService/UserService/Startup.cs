@@ -33,6 +33,18 @@ namespace UserService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                        builder =>
+                        {
+                            builder
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                        });
+            });
+
             services.AddDbContext<AppDbContext>(opt => 
                 //opt.UseSqlServer("Server=mssql-clusterip-srv,1433;Initial Catalog=usersdb;User ID=sa;Password=pa55w0rd!;"));
                 opt.UseSqlServer(Configuration.GetConnectionString("DbConn")));
@@ -96,11 +108,7 @@ namespace UserService
 
             app.UseRouting();
 
-            app.UseCors(x => x
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true) // allow any origin
-                .AllowCredentials()); // allow credentials
+            app.UseCors("AllowSpecificOrigin");
 
             app.UseAuthentication();
             app.UseAuthorization();
