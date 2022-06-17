@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Controllers"
   ],
-  "SelectedNode": "\\UserService.csproj",
+  "SelectedNode": "\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }

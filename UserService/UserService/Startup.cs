@@ -41,15 +41,6 @@ namespace UserService
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                                  policy  =>
-                                  {
-                                      policy.WithOrigins("*");
-                                  });
-            });
-
             services.AddHealthChecks();
 
             services.AddAuthentication(options =>
@@ -105,7 +96,11 @@ namespace UserService
 
             app.UseRouting();
 
-            app.UseCors();
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
 
             app.UseAuthentication();
             app.UseAuthorization();
