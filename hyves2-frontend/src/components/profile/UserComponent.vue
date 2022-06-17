@@ -6,7 +6,7 @@
         src="@/assets/default_profile_picture.jpeg"
         ></v-img>
 
-        <p class="text-md-center">Bram (666)</p>
+        <p class="text-md-center">{{ user.firstName }} (666)</p>
 
         <v-list dense>
           <v-list-item-group
@@ -61,7 +61,20 @@
 </template>
 
 <script>
+import { GET_USER_BY_ID } from '@/store/actions.type';
   export default {
-    name: 'UserComponent'
+    name: 'UserComponent',
+    
+    data() {
+    return {}
+    },
+    created: function () {
+      this.$store.dispatch(GET_USER_BY_ID, {userId: this.$route.params.id})
+    },
+    computed: {
+      user() {
+        return this.$store.getters.GET_USER_BY_ID;
+      }
+    }
   }
 </script>

@@ -3,9 +3,8 @@
     <div class="search">
       <h1>Zoek naar personen</h1>
       <v-autocomplete
-        v-model="model"
-        :items="items"
-        :loading="isLoading"
+        v-model="newTag"
+        :items="entries"
         :search-input.sync="search"
         color="white"
         hide-no-data
@@ -13,7 +12,7 @@
         item-text="Description"
         item-value="API"
         label="Public APIs"
-        placeholder="Start typing to Search"
+        placeholder="Vul een naam in"
         prepend-icon="mdi-database-search"
         return-object
       ></v-autocomplete>
@@ -22,65 +21,42 @@
 </template>
 
 <script>
+import { SEARCH_USERS } from '@/store/actions.type'
 
   export default {
     name: 'HomeView',
 
     data: () => ({
-      descriptionLimit: 60,
-      entries: [],
-      isLoading: false,
-      model: null,
-      search: null,
+      newTag: '',
+      queryTerm: ''
     }),
     computed: {
-      fields () {
-        if (!this.model) return []
-
-        return Object.keys(this.model).map(key => {
-          return {
-            key,
-            value: this.model[key] || 'n/a',
+      search: {
+        get () {
+          return this.queryTerm
+        },
+        
+        set (searchInput) {
+          if (this.queryTerm !== searchInput) {
+            this.queryTerm = searchInput
+            this.loadEntries()
           }
-        })
+        }
       },
-      items () {
-        return this.entries.map(entry => {
-          const Description = entry.Description.length > this.descriptionLimit
-            ? entry.Description.slice(0, this.descriptionLimit) + '...'
-            : entry.Description
-
-          return Object.assign({}, entry, { Description })
-        })
-      },
-      searchResults() {
-          return this.$store.getters.getUsersSearch;
+      entries() {
+        return this.$store.getters.getUsersSearch
       }
     },
-    watch: {
-      search (val) {
-        // Items have already been loaded
-        if (this.items.length > 0) return
-
-        // Items have already been requested
-        if (this.isLoading) return
-
-        this.isLoading = true
-
-        // Lazily load input items
-        fetch(`https://staging.hyves.social/api/users/search/${val}`)
-          .then(res => res.json())
-          .then(res => {
-            const { count, entries } = res
-            this.count = count
-            this.entries = entries
-          })
-          .catch(err => {
-            console.log(err)
-          })
-          .finally(() => (this.isLoading = false))
-      },
+    created () {
+      this.loadEntries()
     },
+
+    methods: {
+      async loadEntries () {
+        console.log("term:"+ this.queryTerm)
+        this.$store.dispatch(SEARCH_USERS, this.queryTerm);
+      }
+    }
   }
 </script>
 

@@ -3,12 +3,14 @@ using KrabbelService.Data;
 using KrabbelService.Dtos;
 using KrabbelService.Logic;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KrabbelService.Controllers
 {
-    [ApiController]
+    [EnableCors("CorsApi")]
     [Route("api/krabbels")]
+    [ApiController]
     public class KrabbelController : Controller
     {
         private readonly ILogger<KrabbelController> _logger;

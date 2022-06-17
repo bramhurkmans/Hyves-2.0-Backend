@@ -17,7 +17,7 @@ const getters = {
 };
 
 const actions = {
-  async [GET_HOBBIES](context, userId) {
+  async [GET_HOBBIES](context, { userId }) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/profiles/${userId}/hobbies`, data: null, method: 'GET' })
         .then(resp => {
@@ -29,7 +29,7 @@ const actions = {
         })
     })
   },
-  async [CREATE_HOBBY](hobby) {
+  async [CREATE_HOBBY](context, { hobby }) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/profiles/0/hobbies`, data: hobby, method: 'POST' })
         .then({
@@ -39,7 +39,7 @@ const actions = {
         })
     })
   },
-  async [DELETE_HOBBY](hobbyId) {
+  async [DELETE_HOBBY](context, { hobbyId }) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/profiles/0/hobbies/${hobbyId}`, data: null, method: 'DELETE' })
         .then({
@@ -49,7 +49,7 @@ const actions = {
         })
     })
   },
-  async [GET_SONGS](context, userId) {
+  async [GET_SONGS](context, { userId }) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/profiles/${userId}/songs`, data: null, method: 'GET' })
         .then(resp => {
@@ -61,7 +61,7 @@ const actions = {
         })
     })
   },
-  async [CREATE_SONG](song) {
+  async [CREATE_SONG](context, { song }) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/profiles/0/songs`, data: song, method: 'POST' })
         .then({
@@ -71,7 +71,7 @@ const actions = {
         })
     })
   },
-  async [DELETE_SONG](songId) {
+  async [DELETE_SONG](context, { songId }) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/profiles/0/songs/${songId}`, data: null, method: 'DELETE' })
         .then({

@@ -10,11 +10,11 @@ const state = {
 };
 
 const getters = {
-  getKrabbels: state => state.krabbels
+  getKrabbelsByUser: state => state.krabbels
 };
 
 const actions = {
-  async [GET_KRABBELS_BY_USER](context, userId) {
+  async [GET_KRABBELS_BY_USER](context, { userId }) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/krabbels/user/${userId}`, data: null, method: 'GET' })
         .then(resp => {
@@ -26,7 +26,7 @@ const actions = {
         })
     })
   },
-  async [CREATE_KRABBEL](context, userId, text) {
+  async [CREATE_KRABBEL](context, { userId, text }) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/krabbels/user/${userId}`, data: { Text: text }, method: 'POST' })
         .then({
@@ -36,7 +36,7 @@ const actions = {
         })
     })
   },
-  async [DELETE_KRABBEL](krabbelId) {
+  async [DELETE_KRABBEL](context, { krabbelId }) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/krabbels/${krabbelId}`, data: null, method: 'DELETE' })
         .then({
