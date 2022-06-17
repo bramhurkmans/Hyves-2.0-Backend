@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -15,6 +16,7 @@ using UserService.Logic;
 
 namespace UserService.Controllers
 {
+    [EnableCors("AllowSpecificOrigin")]
     [ApiController]
     [Route("/api/users")]
         public class UserController : ControllerBase
