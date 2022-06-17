@@ -16,10 +16,10 @@ using UserService.Logic;
 
 namespace UserService.Controllers
 {
-    [EnableCors("AllowSpecificOrigin")]
-    [ApiController]
+    [EnableCors("CorsApi")]
     [Route("/api/users")]
-        public class UserController : ControllerBase
+    [ApiController]
+    public class UserController : ControllerBase
         {
         private readonly IUserLogic _userLogic;
         // private readonly UserRepo _userRepo;

@@ -35,14 +35,10 @@ namespace UserService
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                        builder =>
-                        {
-                            builder
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader();
-                        });
+                options.AddPolicy("CorsApi",
+                    builder => builder.WithOrigins("http://localhost:8080", "https://staging.hyves.social", "https://hyves.social")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
             });
 
             services.AddDbContext<AppDbContext>(opt => 
@@ -108,7 +104,7 @@ namespace UserService
 
             app.UseRouting();
 
-            app.UseCors("AllowSpecificOrigin");
+            app.UseCors("CorsApi");
 
             app.UseAuthentication();
             app.UseAuthorization();
