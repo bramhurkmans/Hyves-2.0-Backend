@@ -18,7 +18,7 @@ const actions = {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/krabbels/users/${userId}`, data: null, method: 'GET' })
         .then(resp => {
-            context.commit(SET_KRABBELS, resp)
+            context.commit(SET_KRABBELS, resp.data)
             resolve(resp)
         })
         .catch(err => {

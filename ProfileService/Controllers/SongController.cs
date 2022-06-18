@@ -11,7 +11,7 @@ using ProfileService.Models;
 
 namespace ProfileService.Controllers
 {
-    [Route("api/profiles/{profileId}[controller]")]
+    [Route("api/profiles/{profileId}/songs")]
     [ApiController]
     public class SongController : ControllerBase
     {
