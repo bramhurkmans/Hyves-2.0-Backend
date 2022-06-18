@@ -45,7 +45,6 @@ namespace UserService.Controllers
         }
 
         [HttpGet("search/{query}")]
-        [Authorize]
         public ActionResult<IEnumerable<UserReadDto>> SearchUsers(string query)
         {
             var users = _userLogic.FindUsers(query);

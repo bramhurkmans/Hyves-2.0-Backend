@@ -33,10 +33,10 @@ import { GET_HOBBIES, GET_SONGS, GET_USER_BY_ID } from '@/store/actions.type'
         return this.$store.getters.GET_USER_BY_ID;
       },
       hobbies() {
-        return this.$store.getters.GET_HOBBIES;
+        return this.$store.getters.getHobbies;
       },
       songs() {
-        return this.$store.getters.GET_SONGS;
+        return this.$store.getters.getSongs;
       }
     }
   }

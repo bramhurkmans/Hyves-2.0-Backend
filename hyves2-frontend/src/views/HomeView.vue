@@ -54,7 +54,7 @@ import { SEARCH_USERS } from '@/store/actions.type'
     methods: {
       async loadEntries () {
         console.log("term:"+ this.queryTerm)
-        this.$store.dispatch(SEARCH_USERS, this.queryTerm);
+        this.$store.dispatch(SEARCH_USERS, {query: this.queryTerm });
       }
     }
   }

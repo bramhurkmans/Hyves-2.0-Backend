@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Bram Hurkmans</h1>
+    <h1>{{ user.firstName }} {{ user.lastName }}</h1>
 
     <v-row>
       <v-col cols="3">
@@ -50,6 +50,7 @@ import KrabbelSectionComponent from '@/components/krabbels/KrabbelSectionCompone
 import FriendsComponent from '../components/profile/FriendsComponent.vue'
 import ProfileComponent from '../components/profile/ProfileComponent.vue'
 import UserComponent from '../components/profile/UserComponent.vue'
+import { GET_USER_BY_ID } from '@/store/actions.type'
 
   export default {
     name: 'HomeProfile',
@@ -60,5 +61,16 @@ import UserComponent from '../components/profile/UserComponent.vue'
         ProfileComponent,
         KrabbelSectionComponent
     },
+    data() {
+    return {}
+    },
+    created: function () {
+      this.$store.dispatch(GET_USER_BY_ID, {userId: this.$route.params.id})
+    },
+    computed: {
+      user() {
+        return this.$store.getters.GET_USER_BY_ID;
+      }
+    }
   }
 </script>

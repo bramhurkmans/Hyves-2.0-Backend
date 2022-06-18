@@ -115,7 +115,7 @@
 
 <script>
 import axios from 'axios'
-import JwtService from "./common/jwt.service"
+//mport JwtService from "./common/jwt.service"
 
 export default {
   name: 'App',
@@ -134,18 +134,18 @@ export default {
     });
 
     // Last step: handle request error general case
-    axios.interceptors.response.use(
-      response => response,
-      error => {
-        // Error
-        const { response: { status } } = error;
+    // axios.interceptors.response.use(
+    //   response => response,
+    //   error => {
+    //     // Error
+    //     const { response: { status } } = error;
 
-        if (status === 401) {
-          JwtService.destroyToken()
-          this.$router.push('/login')
-        }
-      }
-    );
+    //     if (status === 401) {
+    //       JwtService.destroyToken()
+    //       this.$router.push('/login')
+    //     }
+    //   }
+    // );
   },
 };
 </script>
