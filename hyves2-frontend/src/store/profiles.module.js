@@ -12,8 +12,8 @@ const state = {
 };
 
 const getters = {
-  getHobbies: state => state.songs,
-  getSongs: state => state.hobbies,
+  getHobbies: state => state.hobbies,
+  getSongs: state => state.songs,
 };
 
 const actions = {
