@@ -13,7 +13,7 @@ const state = {
 
 const getters = {
   getHobbies: state => state.hobbies,
-  getSongs: state => state.songs,
+  getSongs: state => state.kaas,
 };
 
 const actions = {
@@ -92,7 +92,7 @@ const mutations = {
     state.hobbies = data;
   },
   [SET_SONGS](state, data) {
-    state.songs = data;
+    state.kaas = data;
   },
 };
 
