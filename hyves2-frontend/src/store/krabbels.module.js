@@ -16,7 +16,7 @@ const getters = {
 const actions = {
   async [GET_KRABBELS_BY_USER](context, { userId }) {
     return new Promise((resolve, reject) => {        
-        axios({url: `/api/krabbels/user/${userId}`, data: null, method: 'GET' })
+        axios({url: `/api/krabbels/users/${userId}`, data: null, method: 'GET' })
         .then(resp => {
             context.commit(SET_KRABBELS, resp)
             resolve(resp)
@@ -28,7 +28,7 @@ const actions = {
   },
   async [CREATE_KRABBEL](context, { userId, text }) {
     return new Promise((resolve, reject) => {        
-        axios({url: `/api/krabbels/user/${userId}`, data: { Text: text }, method: 'POST' })
+        axios({url: `/api/krabbels/users/${userId}`, data: { Text: text }, method: 'POST' })
         .then({
         })
         .catch(err => {
