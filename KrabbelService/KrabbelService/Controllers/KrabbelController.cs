@@ -40,6 +40,8 @@ namespace KrabbelService.Controllers
         [HttpGet("users/{userId}")]
         public async Task<IActionResult> GetKrabbelsByUser(int userId)
         {
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
             var krabbels = _krabbelLogic.GetKrabbels(userId);
 
             return Ok(krabbels);

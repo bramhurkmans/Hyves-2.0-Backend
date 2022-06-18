@@ -10,7 +10,7 @@ metadata:
     nginx.ingress.kubernetes.io/auth-url: "https://staging.hyves.social/oauth2/auth"
     nginx.ingress.kubernetes.io/auth-signin: "https://staging.hyves.social/oauth2/start?rd=$escaped_request_uri"
     nginx.ingress.kubernetes.io/auth-response-headers:  "Authorization, X-Auth-Request-Email, X-Auth-Request-User, X-Forwarded-Access-Token"
-    # nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
     # nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS, DELETE"
     # nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
     # nginx.ingress.kubernetes.io/configuration-snippet: |
