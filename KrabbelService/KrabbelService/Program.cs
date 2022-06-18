@@ -12,11 +12,22 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CorsApi",
-        builder => builder.WithOrigins("http://localhost:8080", "https://staging.hyves.social", "https://hyves.social")
-            .AllowAnyHeader()
-            .AllowAnyMethod());
+    options.AddPolicy(name: "CorsApi",
+                policy =>
+                {
+                    policy.WithOrigins("http://localhost:8080", "https://staging.hyves.social", "https://hyves.social")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                });
 });
+
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("CorsApi",
+//        builder => builder.WithOrigins("http://localhost:8080", "https://staging.hyves.social", "https://hyves.social")
+//            .AllowAnyHeader()
+//            .AllowAnyMethod());
+//});
 
 // Add services to the container.
 
@@ -78,6 +89,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
 
 app.UseCors("CorsApi");
 
