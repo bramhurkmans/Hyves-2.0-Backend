@@ -44,6 +44,15 @@ namespace UserService.Controllers
             return Ok(userReadDto);
         }
 
+        [HttpGet("{userId}")]
+        public ActionResult<UserReadDto> getUserById(int userId)
+        {
+            var user = _userLogic.GetUser(userId);
+            var userReadDto = _mapper.Map<UserReadDto>(user);
+
+            return Ok(userReadDto);
+        }
+
         [HttpGet("search/{query}")]
         public ActionResult<IEnumerable<UserReadDto>> SearchUsers(string query)
         {

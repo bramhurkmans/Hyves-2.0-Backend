@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers"
+    "\\Controllers",
+    "\\Logic"
   ],
-  "SelectedNode": "\\Startup.cs",
+  "SelectedNode": "\\Logic\\IUserLogic.cs",
   "PreviewInSolutionExplorer": false
 }
