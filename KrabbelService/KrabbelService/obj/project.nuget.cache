@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1cUbBSi2K0H0ohemaNYEA6hf2yxE34HcNydqZ88dPs2Kbs1l1HwK26mtb0FZtJBYqs70aH16GPQ7LF308oBhug==",
+  "dgSpecHash": "nt82xCms3zoG2HOeecMtFv0rCJXBjt9Os4qexjkEWreVl2ixH9MkjV1oSL68YTzCTtmdjJ7g1xePDDgjofA1mA==",
   "success": true,
   "projectFilePath": "C:\\Users\\bramh\\Documents\\repos\\Hyves-2.0-Backend\\KrabbelService\\KrabbelService\\KrabbelService.csproj",
   "expectedPackageFiles": [
@@ -17,7 +17,15 @@
     "C:\\Users\\bramh\\.nuget\\packages\\identitymodel\\4.1.0\\identitymodel.4.1.0.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\identitymodel.oidcclient\\3.1.2\\identitymodel.oidcclient.3.1.2.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\kubernetesclient\\4.0.26\\kubernetesclient.4.0.26.nupkg.sha512",
+    "C:\\Users\\bramh\\.nuget\\packages\\microsoft.aspnet.cors\\5.2.9\\microsoft.aspnet.cors.5.2.9.nupkg.sha512",
+    "C:\\Users\\bramh\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",
+    "C:\\Users\\bramh\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.9\\microsoft.aspnet.webapi.core.5.2.9.nupkg.sha512",
+    "C:\\Users\\bramh\\.nuget\\packages\\microsoft.aspnet.webapi.cors\\5.2.9\\microsoft.aspnet.webapi.cors.5.2.9.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.5\\microsoft.aspnetcore.authentication.jwtbearer.6.0.5.nupkg.sha512",
+    "C:\\Users\\bramh\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
+    "C:\\Users\\bramh\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\bramh\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.2.0\\microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
+    "C:\\Users\\bramh\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\microsoft.azure.cosmos\\3.21.0\\microsoft.azure.cosmos.3.21.0.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.0.0\\microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
@@ -55,6 +63,7 @@
     "C:\\Users\\bramh\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.10.0\\microsoft.identitymodel.protocols.6.10.0.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.10.0\\microsoft.identitymodel.protocols.openidconnect.6.10.0.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.10.0\\microsoft.identitymodel.tokens.6.10.0.nupkg.sha512",
+    "C:\\Users\\bramh\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
@@ -68,6 +77,7 @@
     "C:\\Users\\bramh\\.nuget\\packages\\mongodb.libmongocrypt\\1.5.2\\mongodb.libmongocrypt.1.5.2.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\netstandard.library\\2.0.0-preview1-25301-01\\netstandard.library.2.0.0-preview1-25301-01.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\bramh\\.nuget\\packages\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\portable.bouncycastle\\1.8.1.3\\portable.bouncycastle.1.8.1.3.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\prometheus-net\\4.1.1\\prometheus-net.4.1.1.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\rabbitmq.client\\6.3.1\\rabbitmq.client.6.3.1.nupkg.sha512",
@@ -140,5 +150,36 @@
     "C:\\Users\\bramh\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\bramh\\.nuget\\packages\\yamldotnet\\8.1.2\\yamldotnet.8.1.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Cors 5.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Cors",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.WebApi.Core 5.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.WebApi.Core",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.WebApi.Cors 5.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.WebApi.Cors",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

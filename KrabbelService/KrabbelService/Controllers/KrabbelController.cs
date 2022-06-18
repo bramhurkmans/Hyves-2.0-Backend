@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using KrabbelService.Data;
 using KrabbelService.Dtos;
 using KrabbelService.Logic;
 using Microsoft.AspNetCore.Authorization;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KrabbelService.Controllers
 {
-    [EnableCors("CorsApi")]
+    [EnableCors("corsapp")]
     [Route("api/krabbels")]
     [ApiController]
     public class KrabbelController : Controller
