@@ -30,9 +30,8 @@
                   <v-col cols="12">
                     <v-text-field
                         label="Text"
-                        v-model="datafields.text"
-                        type="text"
-                        :rules="rules.text"
+                        v-model="datafields.Text"
+                        :rules="rules.Text"
                         required
                     ></v-text-field>
                   </v-col>
@@ -72,10 +71,10 @@ export default {
       dialog: false,
       valid: "",
       datafields: {
-        amount: ""
+        Text: ""
       },
       rules: {
-        amount: [
+        Text: [
           v => !!v || 'Amount is verplicht',
           v => (v && v.length >= 4) || 'Moet langer dan 4 karakters zijn.',
         ]
@@ -84,7 +83,10 @@ export default {
   },
   methods: {
     addMoney: function () {
+      console.log("LLOLOLOLOLO")
+      console.log(this.datafields)
       if(this.$refs.form.validate()) {
+        
         this.$store.dispatch(CREATE_KRABBEL, { userId: this.$route.params.id, data: this.datafields})
         setTimeout(() => {
           this.$store.dispatch(GET_KRABBELS_BY_USER, { userId: this.$route.params.id });

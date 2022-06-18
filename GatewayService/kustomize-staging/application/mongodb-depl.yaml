@@ -95,3 +95,16 @@ spec:
   type: NodePort
 status:
   loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: mongo
+  ports:
+  - protocol: TCP
+    port: 32000
+    targetPort: 27017

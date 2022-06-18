@@ -26,9 +26,9 @@ const actions = {
         })
     })
   },
-  async [CREATE_KRABBEL](context, { userId, text }) {
+  async [CREATE_KRABBEL](context, { userId, data }) {
     return new Promise((resolve, reject) => {        
-        axios({url: `/api/krabbels/users/${userId}`, data: { Text: text }, method: 'POST' })
+        axios({url: `/api/krabbels/users/${userId}`, data: data, method: 'POST' })
         .then({
         })
         .catch(err => {

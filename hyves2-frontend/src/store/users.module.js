@@ -24,7 +24,7 @@ const actions = {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/users/${userId}`, data: null, method: 'GET' })
         .then(resp => {
-            context.commit(SET_USER_BY_ID, resp)
+            context.commit(SET_USER_BY_ID, resp.data)
             resolve(resp)
         })
         .catch(err => {

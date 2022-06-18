@@ -69,7 +69,7 @@ import { GET_USER_BY_ID } from '@/store/actions.type'
     },
     computed: {
       user() {
-        return this.$store.getters.GET_USER_BY_ID;
+        return this.$store.getters.getUserById;
       }
     }
   }
