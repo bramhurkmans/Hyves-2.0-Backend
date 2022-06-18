@@ -72,13 +72,6 @@ spec:
                 name: frontend-clusterip-srv
                 port:
                   number: 8080
-          - path: /mongo
-            pathType: Prefix
-            backend:
-              service:
-                name: mongodb-clusterip-srv
-                port:
-                  number: 27017
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
