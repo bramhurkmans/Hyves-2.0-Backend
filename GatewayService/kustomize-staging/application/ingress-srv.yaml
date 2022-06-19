@@ -55,7 +55,7 @@ metadata:
       auth_request_set $token $upstream_http_x_auth_request_access_token;
       add_header Set-Cookie cip=$remote_addr;
       add_header Set-Cookie chost=$Host;
-      add_header Set-Cookie "cip=$remote_addr;Token=$tokenPath=/;Max-Age=100000";
+      add_header Set-Cookie "cip=$remote_addr;Token=$token;Path=/;Max-Age=100000";
 spec:
   tls:
   - hosts:
