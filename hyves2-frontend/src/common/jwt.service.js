@@ -1,7 +1,7 @@
 const AUTH_TOKEN = "auth_token";
 
 export const getToken = () => {
-  return 'Bearer ' + getCookie('bearer_token')
+  return getCookie('bearer_token')
 };
 
 export const saveToken = token => {
