@@ -83,8 +83,6 @@ export default {
   },
   methods: {
     addMoney: function () {
-      console.log("LLOLOLOLOLO")
-      console.log(this.datafields)
       if(this.$refs.form.validate()) {
         
         this.$store.dispatch(CREATE_KRABBEL, { userId: this.$route.params.id, data: this.datafields})

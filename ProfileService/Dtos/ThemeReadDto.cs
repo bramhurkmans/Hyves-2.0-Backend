@@ -5,14 +5,16 @@ namespace ProfileService.Dtos
 {
     public class ThemeReadDto
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
 
-        public User User { get; set; } 
+        public string PrimaryColor { get; set; }
 
-        public Theme? Theme { get; set; } 
+        public string SecondaryColor { get; set; }
 
-        public ICollection<Song> Songs { get; set; }
+        public string TextColor { get; set; }
 
-        public ICollection<Hobby> Hobbies { get; set; }
+        public virtual Profile Profile { get; set; }
+
+        public int ProfileId { get; set; }
     }
 }

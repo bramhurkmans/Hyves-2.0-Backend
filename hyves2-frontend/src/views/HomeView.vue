@@ -3,13 +3,13 @@
     <div class="search">
       <h1>Zoek naar personen</h1>
       <v-autocomplete
-        v-model="newTag"
-        :items="entries"
+        v-model="chosenUser"
+        :items="users"
         :search-input.sync="search"
         color="white"
         hide-no-data
         hide-selected
-        item-text="Description"
+        item-text="firstName"
         item-value="API"
         label="Public APIs"
         placeholder="Vul een naam in"
@@ -21,13 +21,13 @@
 </template>
 
 <script>
-import { SEARCH_USERS } from '@/store/actions.type'
+import { GET_ME, SEARCH_USERS } from '@/store/actions.type'
 
   export default {
     name: 'HomeView',
 
     data: () => ({
-      newTag: '',
+      chosenUser: {},
       queryTerm: ''
     }),
     computed: {
@@ -43,18 +43,28 @@ import { SEARCH_USERS } from '@/store/actions.type'
           }
         }
       },
-      entries() {
+      users() {
         return this.$store.getters.getUsersSearch
       }
     },
     created () {
       this.loadEntries()
+      this.$store.dispatch(GET_ME);
     },
 
     methods: {
       async loadEntries () {
-        console.log("term:"+ this.queryTerm)
         this.$store.dispatch(SEARCH_USERS, {query: this.queryTerm });
+      }
+    },
+    watch: {
+      chosenUser: {
+        deep: true,
+        handler (newValue) {
+          if(Number.isInteger(newValue.id)) {
+            this.$router.push(`/profile/${newValue.id}`)
+          }
+        }
       }
     }
   }

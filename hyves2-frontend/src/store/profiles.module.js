@@ -7,7 +7,7 @@ import {
 
 
 const state = {
-  songs: [],
+  kaas: [],
   hobbies: []
 };
 

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_USER_BY_ID, SEARCH_USERS } from "./actions.type";
+import { GET_ME, GET_USER_BY_ID, SEARCH_USERS } from "./actions.type";
 import {
   SET_FRIENDS,
   SET_USER_BY_ID,
@@ -20,6 +20,18 @@ const getters = {
 };
 
 const actions = {
+  async [GET_ME]() {
+    return new Promise((resolve, reject) => {        
+        axios({url: `/api/users/me`, data: null, method: 'GET' })
+        .then(resp => {
+            //context.commit(SET_USER_BY_ID, resp.data)
+            resolve(resp)
+        })
+        .catch(err => {
+            reject(err)
+        })
+    })
+  },
   async [GET_USER_BY_ID](context, { userId }) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/users/${userId}`, data: null, method: 'GET' })
@@ -36,7 +48,6 @@ const actions = {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/users/search/${query}`, data: null, method: 'GET' })
         .then(resp => {
-          console.log("dta:"+ resp.data)
           context.commit(SET_USER_SEARCH, resp.data)
           resolve(resp)
         })

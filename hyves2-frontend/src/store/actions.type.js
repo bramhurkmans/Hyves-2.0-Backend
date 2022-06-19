@@ -1,4 +1,5 @@
 export const GET_USER_INFO = 'getUserInfo';
+export const GET_ME = 'getMe';
 
 
 //KRABBELS
