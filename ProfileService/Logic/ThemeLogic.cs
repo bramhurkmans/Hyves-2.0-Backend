@@ -10,9 +10,10 @@ namespace ProfileService.Logic
         private readonly IThemeRepo _themeRepo;
         private readonly IUserRepo _userRepo;
 
-        public ThemeLogic(IThemeRepo themeRepo)
+        public ThemeLogic(IThemeRepo themeRepo, IUserRepo userRepo)
         {
             _themeRepo = themeRepo;
+            _userRepo = userRepo;
         }
 
         public Theme GetByProfileId(int profileId)
@@ -22,7 +23,8 @@ namespace ProfileService.Logic
 
         public bool UpdateTheme(ClaimsPrincipal claimsPrincipal, Theme theme)
         {
-            var user = _userRepo.GetUserByKeycloakIdentifier(claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var identifier = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var user = _userRepo.GetUserByKeycloakIdentifier(identifier);
 
             if (user.Profile.Theme.Id != theme.Id) return false;
 
