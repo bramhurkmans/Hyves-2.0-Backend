@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="hyvesSecondary">
 
         <v-img
         lazy-src="@/assets/default_profile_picture.jpeg"

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="hyvesSecondary">
     <h2>Profiel</h2>
     <p>666 x bekeken, Hyver sinds: 05-08-2006</p>
 

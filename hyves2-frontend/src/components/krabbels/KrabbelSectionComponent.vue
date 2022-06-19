@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="hyvesSecondary">
     <h2>Krabbels</h2>
 
     <div class="krabbel-list" >

@@ -1,22 +1,37 @@
 import axios from 'axios'
-import { CREATE_HOBBY, CREATE_SONG, DELETE_HOBBY, DELETE_SONG, GET_HOBBIES, GET_SONGS } from "./actions.type";
+import { CREATE_HOBBY, CREATE_SONG, DELETE_HOBBY, DELETE_SONG, GET_HOBBIES, GET_SONGS, GET_THEME } from "./actions.type";
 import {
   SET_HOBBIES,
   SET_SONGS,
+  SET_THEME,
 } from "./mutations.type";
 
 
 const state = {
-  kaas: [],
-  hobbies: []
+  songs: [],
+  hobbies: [],
+  theme: {}
 };
 
 const getters = {
   getHobbies: state => state.hobbies,
-  getSongs: state => state.kaas,
+  getSongs: state => state.songs,
+  getTheme: state => state.theme,
 };
 
 const actions = {
+  async [GET_THEME](context, { userId }) {
+    return new Promise((resolve, reject) => {        
+        axios({url: `/api/profiles/${userId}/themes`, data: null, method: 'GET' })
+        .then(resp => {
+            context.commit(SET_THEME, resp.data)
+            resolve(resp)
+        })
+        .catch(err => {
+            reject(err)
+        })
+    })
+  },
   async [GET_HOBBIES](context, { userId }) {
     return new Promise((resolve, reject) => {        
         axios({url: `/api/profiles/${userId}/hobbies`, data: null, method: 'GET' })
@@ -92,7 +107,10 @@ const mutations = {
     state.hobbies = data;
   },
   [SET_SONGS](state, data) {
-    state.kaas = data;
+    state.songs = data;
+  },
+  [SET_THEME](state, data) {
+    state.theme = data;
   },
 };
 

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="hyvesSecondary">
     <h2>Vrienden (666)</h2>
 
     <v-row>
