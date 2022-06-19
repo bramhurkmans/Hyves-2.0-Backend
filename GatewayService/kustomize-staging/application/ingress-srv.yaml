@@ -51,6 +51,9 @@ metadata:
     nginx.ingress.kubernetes.io/auth-url: "https://staging.hyves.social/oauth2/auth"
     nginx.ingress.kubernetes.io/auth-signin: "https://staging.hyves.social/oauth2/start?rd=$escaped_request_uri"
     nginx.ingress.kubernetes.io/auth-response-headers:  "Authorization, X-Auth-Request-Email, X-Auth-Request-User, X-Forwarded-Access-Token"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      auth_request_set $token $upstream_http_x_auth_request_access_token;
+      add_header 'Authorization' Bearer $token;
 spec:
   tls:
   - hosts:
