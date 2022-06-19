@@ -88,7 +88,7 @@ import { GET_THEME, GET_USER_BY_ID } from '@/store/actions.type'
 
           document.querySelectorAll(".hyvesSecondary").forEach(elem => elem.style.backgroundColor = newValue.secondaryColor);
 
-          document.querySelectorAll("h1, h2, h3, h4, h5, h6, span").forEach(elem => elem.style.color = newValue.textColor);
+          //document.querySelectorAll("h1, h2, h3, h4, h5, h6, span").forEach(elem => elem.style.color = newValue.textColor);
         }
       }
     }
