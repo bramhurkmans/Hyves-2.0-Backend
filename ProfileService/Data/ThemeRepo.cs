@@ -49,5 +49,10 @@ namespace ProfileService.Data
         {
             return (_context.SaveChanges() >= 0);
         }
+
+        public void UpdateTheme(Theme theme)
+        {
+            _context.Themes.Update(theme);
+        }
     }
 }

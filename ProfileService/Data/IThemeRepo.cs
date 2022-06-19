@@ -15,6 +15,8 @@ namespace ProfileService.Data
 
         void CreateTheme(Theme theme);
 
+        void UpdateTheme(Theme theme);
+
         void RemoveTheme(int themeId);
     }
 }

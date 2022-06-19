@@ -48,5 +48,10 @@ namespace KrabbelService.Data
         {
             return true;
         }
+
+        public void UpdateKrabbel(Krabbel krabbel)
+        {
+            _context.ReplaceOne(x => x.Id == krabbel.Id, krabbel);
+        }
     }
 }

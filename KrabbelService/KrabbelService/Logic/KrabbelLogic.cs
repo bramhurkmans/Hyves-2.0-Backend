@@ -53,5 +53,16 @@ namespace KrabbelService.Logic
         {
             return _krabbelRepo.GetAllKrabbels().Where(k => k.Receiver.ExternalId == userId).ToList();
         }
+
+        public ICollection<Krabbel> GetAllKrabbels()
+        {
+            return _krabbelRepo.GetAllKrabbels().ToList();
+        }
+
+        public bool UpdateKrabbel(Krabbel krabbel)
+        {
+            _krabbelRepo.UpdateKrabbel(krabbel);
+            return _krabbelRepo.SaveChanges();
+        }
     }
 }

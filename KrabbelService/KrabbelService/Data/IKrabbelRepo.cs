@@ -13,6 +13,8 @@ namespace KrabbelService.Data
 
         void CreateKrabbel(Krabbel krabbel);
 
+        void UpdateKrabbel(Krabbel krabbel);
+
         void RemoveKrabbel(int id);
     }
 }

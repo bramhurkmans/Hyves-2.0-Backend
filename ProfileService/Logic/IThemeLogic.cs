@@ -5,6 +5,6 @@ namespace ProfileService.Logic
 {
     public interface IThemeLogic
     {
-        public bool SetTheme(ClaimsPrincipal claimsPrincipal, int profileId, Theme theme);
+        public bool UpdateTheme(ClaimsPrincipal claimsPrincipal, Theme theme);
     }
 }

@@ -11,7 +11,7 @@
         hide-selected
         item-text="firstName"
         item-value="API"
-        label="Public APIs"
+        label="Vul een naam in"
         placeholder="Vul een naam in"
         prepend-icon="mdi-database-search"
         return-object

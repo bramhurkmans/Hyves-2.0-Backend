@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProfileService.AsyncDataServices;
 using ProfileService.Data;
@@ -32,6 +33,22 @@ namespace ProfileService.Controllers
             var themeItem = _themeRepo.GetThemeByProfileId(profileId);
 
             return Ok(_mapper.Map<ThemeReadDto>(themeItem));
+        }
+
+        [HttpPut]
+        [Authorize]
+        public ActionResult<IEnumerable<ThemeReadDto>> UpdateTheme(int profileId)
+        {
+            //console.writeline("creating song...");
+
+            //var songmodel = _mapper.map<song>(songcreatedto);
+            //_songlogic.createsong(this.user, songmodel);
+
+            //var songreaddto = _mapper.map<songreaddto>(songmodel);
+
+            //return ok(_mapper.map<themereaddto>(themeitem));
+
+            return Ok();
         }
     } 
 }
