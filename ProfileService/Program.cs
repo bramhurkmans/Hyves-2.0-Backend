@@ -51,6 +51,7 @@ builder.Services.AddTransient<IClaimsTransformation, ClaimsTransformer>();
 builder.Services.AddScoped<IUserLogic, UserLogic>();
 builder.Services.AddScoped<IHobbyLogic, HobbyLogic>();
 builder.Services.AddScoped<ISongLogic, SongLogic>();
+builder.Services.AddScoped<IThemeLogic, ThemeLogic>();
 
 builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<IProfileRepo, ProfileRepo>();

@@ -8,6 +8,8 @@ namespace ProfileService.Profiles
         public ThemesProfile()
         {
             CreateMap<ProfileService.Models.Theme, ThemeReadDto>();
+
+            CreateMap<ThemeUpdateDto, ProfileService.Models.Theme>();
         }
     }
 }

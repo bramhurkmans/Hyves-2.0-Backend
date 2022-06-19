@@ -14,13 +14,19 @@ namespace ProfileService.Logic
         {
             _themeRepo = themeRepo;
         }
+
+        public Theme GetByProfileId(int profileId)
+        {
+            return _themeRepo.GetThemeByProfileId(profileId);
+        }
+
         public bool UpdateTheme(ClaimsPrincipal claimsPrincipal, Theme theme)
         {
             var user = _userRepo.GetUserByKeycloakIdentifier(claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value);
 
             if (user.Profile.Theme.Id != theme.Id) return false;
 
-            _themeRepo.CreateTheme(theme);
+            _themeRepo.UpdateTheme(theme);
 
             return _themeRepo.SaveChanges();
         }
