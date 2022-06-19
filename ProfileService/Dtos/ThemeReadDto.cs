@@ -12,9 +12,5 @@ namespace ProfileService.Dtos
         public string SecondaryColor { get; set; }
 
         public string TextColor { get; set; }
-
-        public virtual Profile Profile { get; set; }
-
-        public int ProfileId { get; set; }
     }
 }
