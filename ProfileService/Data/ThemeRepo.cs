@@ -35,7 +35,7 @@ namespace ProfileService.Data
 
         public Theme GetThemeByProfileId(int profileId)
         {
-            return _context.Profiles.Where(h => h.Id == profileId).FirstOrDefault().Theme;
+            return _context.Profiles.Where(h => h.User.Id == profileId).FirstOrDefault().Theme;
         }
 
         public void RemoveTheme(int themeId)
