@@ -1,5 +1,7 @@
 <template>
   <v-container class="hyvesSecondary">
+    <add-hobby-modal></add-hobby-modal>
+    <add-song-modal></add-song-modal>
     <h2>Profiel</h2>
     <p>666 x bekeken, Hyver sinds: 05-08-2006</p>
 
@@ -17,9 +19,16 @@
 
 <script>
 import { GET_HOBBIES, GET_SONGS, GET_USER_BY_ID } from '@/store/actions.type'
+import AddHobbyModal from './AddHobbyModal.vue'
+import AddSongModal from './AddSongModal.vue'
+
   export default {
     name: 'ProfileComponent',
 
+    components: {
+      AddHobbyModal,
+      AddSongModal
+    },
     data() {
     return {}
     },

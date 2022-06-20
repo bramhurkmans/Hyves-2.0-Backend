@@ -1,6 +1,7 @@
 <template>
   <v-container class="hyvesPrimary">
     <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+    <change-theme-modal></change-theme-modal>
 
     <v-row>
       <v-col cols="3">
@@ -50,6 +51,7 @@ import KrabbelSectionComponent from '@/components/krabbels/KrabbelSectionCompone
 import FriendsComponent from '../components/profile/FriendsComponent.vue'
 import ProfileComponent from '../components/profile/ProfileComponent.vue'
 import UserComponent from '../components/profile/UserComponent.vue'
+import ChangeThemeModal from '../components/theme/ChangeThemeModal.vue'
 import { GET_THEME, GET_USER_BY_ID } from '@/store/actions.type'
 
   export default {
@@ -59,7 +61,8 @@ import { GET_THEME, GET_USER_BY_ID } from '@/store/actions.type'
       FriendsComponent,
         UserComponent,
         ProfileComponent,
-        KrabbelSectionComponent
+        KrabbelSectionComponent,
+        ChangeThemeModal
     },
     data() {
     return {}

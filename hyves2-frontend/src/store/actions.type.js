@@ -16,6 +16,7 @@ export const CREATE_HOBBY = 'createHobby';
 export const DELETE_HOBBY = 'deleteHobby';
 
 export const GET_THEME = 'getTheme';
+export const UPDATE_THEME = 'updateTheme';
 
 export const GET_SONGS = 'getSongs';
 export const CREATE_SONG = 'createSong';
