@@ -30,7 +30,7 @@ namespace ProfileService.Data
 
         public Profile GetProfileById(int id)
         {
-            return _context.Profiles.FirstOrDefault(p => p.Id == id);
+            return _context.Profiles.FirstOrDefault(p => p.UserId == id);
         }
 
         public bool SaveChanges()
